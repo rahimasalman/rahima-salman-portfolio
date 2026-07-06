@@ -1,0 +1,20 @@
+{
+  "name": "rahima-portfolio",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev --port 5000",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^4.4.8",
+    "vue": "^3.5.38",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/sitemap": "^8.2.2"
+  }
+}

@@ -1,0 +1,6 @@
+User-Agent: *
+Disallow:
+User-Agent: *
+Disallow:
+
+Sitemap: https://github.com/rahimasalman/sitemap.xml
