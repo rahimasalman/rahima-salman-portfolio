@@ -3,4 +3,4 @@ Disallow:
 User-Agent: *
 Disallow:
 
-Sitemap: https://github.com/rahimasalman/sitemap.xml
+Sitemap: https://rahimasalman.netlify.app/sitemap.xml

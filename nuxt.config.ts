@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/sitemap'],
   site: {
-    url: 'https://github.com/rahimasalman',
-    name: 'Rahima Salmanova — Portfolio',
+    url: 'https://rahimasalman.netlify.app',
+    name: 'Rahima Salman — Portfolio',
   }
 })
