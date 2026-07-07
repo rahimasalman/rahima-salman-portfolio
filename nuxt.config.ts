@@ -6,5 +6,9 @@ export default defineNuxtConfig({
   site: {
     url: 'https://rahimasalman.netlify.app',
     name: 'Rahima Salman — Portfolio',
+  },
+  routeRules: {
+    '/': { prerender: true },      // SSG (while build, static)
+    '/activity': { ssr: true },    // SSR (new on each request)
   }
 })

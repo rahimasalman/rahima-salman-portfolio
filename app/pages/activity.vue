@@ -1,0 +1,20 @@
+<script setup lang="ts">
+const { data: repos, pending, error } = await useFetch(
+    'https://api.github.com/users/rahimasalman/repos',
+    { query: { sort: 'updated', per_page: 6 } }
+)
+</script>
+
+<template>
+  <main>
+    <h1>Son GitHub layihələrim</h1>
+    <p v-if="pending">Yüklənir...</p>
+    <p v-else-if="error">Xəta baş verdi.</p>
+    <ul v-else>
+      <li v-for="repo in repos" :key="repo.id">
+        <a :href="repo.html_url" target="_blank">{{ repo.name }}</a>
+        <span v-if="repo.description"> — {{ repo.description }}</span>
+      </li>
+    </ul>
+  </main>
+</template>
