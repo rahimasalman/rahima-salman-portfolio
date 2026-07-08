@@ -2,7 +2,6 @@
   <main>
     <h1>Rahima Salmanova</h1>
     <p>Frontend Developer — Vue.js / Nuxt</p>
-    <NuxtLink to="/activity">Projects</NuxtLink>
   </main>
 </template>
 <script setup lang="ts">
