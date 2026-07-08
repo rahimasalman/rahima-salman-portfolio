@@ -1,7 +1,7 @@
 <template>
   <main>
     <!-- HERO -->
-    <section class="hero" @mousemove="onMove" @mouseleave="onLeave">
+    <section class="hero reveal" @mousemove="onMove" @mouseleave="onLeave">
       <div class="hero__card" :style="{ transform: tilt }">
       <h1>Rahima Salmanova</h1>
       <p>Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları (ads-tech)</p>
@@ -15,7 +15,7 @@
     </section>
 
     <!-- TƏCRÜBƏ -->
-    <section>
+    <section class="reveal">
       <h2>Təcrübə</h2>
       <article>
         <h3>New Media Azerbaijan — Frontend Developer</h3>
@@ -47,6 +47,14 @@ function onMove(e: MouseEvent) {
   tilt.value = `rotateY(${px * 8}deg) rotateX(${-py * 8}deg)`
 }
 function onLeave() { tilt.value = 'rotateY(0deg) rotateX(0deg)' }
+
+onMounted(() => {
+  const els = document.querySelectorAll('.reveal')
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target) } })
+  }, { threshold: 0.15 })
+  els.forEach(el => io.observe(el))
+})
 </script>
 
 <style scoped>
@@ -68,4 +76,25 @@ function onLeave() { tilt.value = 'rotateY(0deg) rotateX(0deg)' }
 .links > a{
   padding:4px;
 }
+/* BAZA (mobil): təmiz kart, depth üçün kölgə */
+.exp-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  margin-block: 1rem;
+}
+/* GÜCLƏNDİRMƏ (desktop + mouse): hover-da yüngül qalxma + əyilmə */
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+  .exp-card {
+    transition: transform .25s ease, box-shadow .25s ease;
+    transform-style: preserve-3d;
+  }
+  .exp-card:hover {
+    transform: translateY(-6px) rotateX(4deg);
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  }
+}
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
 </style>
