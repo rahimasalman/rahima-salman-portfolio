@@ -3,40 +3,41 @@
     <!-- HERO -->
     <section class="hero reveal" @mousemove="onMove" @mouseleave="onLeave">
       <div class="hero__card" :style="{ transform: tilt }">
-      <h1>Rahima Salmanova</h1>
-      <p>Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları (ads-tech)</p>
-<!--        TODO: Add a brief tagline -->
-      <p>I build advertising platforms end-to-end — from architecture to launch — with a focus on performance, reusable systems, and clean UX.</p>
-      <div class="links">
-        <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
-        <a href="mailto:rahimasalman7@gmail.com">Email</a>
-      </div>
+        <h1>Rahima Salmanova</h1>
+        <p>{{ $t('hero.role') }}</p>
+        <p>{{ $t('hero.tagline') }}</p>
+        <div class="links">
+          <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
+          <a href="mailto:rahimasalman7@gmail.com">Email</a>
+        </div>
       </div>
     </section>
 
-    <!-- TƏCRÜBƏ -->
+    <!-- EXPERIENCE -->
     <section class="reveal">
-      <h2>Təcrübə</h2>
+      <h2>{{ $t('experience.title') }}</h2>
       <article class="exp-card">
-        <h3>New Media Azerbaijan — Frontend Developer</h3>
-<!--        TODO: Add a brief description of your role and responsibilities -->
-        <p>Building a TypeScript-driven Vue/Nuxt advertising platform integrated with Google Ads, Meta, TikTok, YouTube, DV360, Telegram and Twitter. Led file-upload, advanced reporting and payment modules; drove a shared design system and performance budgets. ~30% revenue uplift in the first quarter post-release.</p>
+        <h3>{{ $t('experience.newmedia.title') }}</h3>
+        <p>{{ $t('experience.newmedia.desc') }}</p>
       </article>
       <article class="exp-card">
-        <h3>Adviad — Frontend Developer</h3>
-        <p>Architected and led a cross-channel advertising platform (adviad.com) from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times.</p>
+        <h3>{{ $t('experience.adviad.title') }}</h3>
+        <p>{{ $t('experience.adviad.desc') }}</p>
       </article>
-      <p><NuxtLink to="/activity">Live GitHub projects →</NuxtLink></p>
+      <p><NuxtLink to="/activity">{{ $t('experience.activityLink') }}</NuxtLink></p>
     </section>
   </main>
 </template>
+
 <script setup lang="ts">
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Rahima Salmanova — Frontend Developer',
-  description: 'Frontend developer with ~5 years building Vue.js & Nuxt applications, specialized in advertising platforms. Open to frontend/senior roles — Baku & remote',
-  ogTitle: 'Rahima Salmanova — Frontend Developer',
-  ogDescription: 'Frontend developer with ~5 years building Vue.js & Nuxt applications, specialized in advertising platforms. Open to frontend/senior roles — Baku & remote',
+  title: () => t('seo.title'),
+  description: () => t('seo.description'),
+  ogTitle: () => t('seo.title'),
+  ogDescription: () => t('seo.description'),
   ogType: 'website',
 })
 
@@ -44,7 +45,7 @@ const tilt = ref('')
 function onMove(e: MouseEvent) {
   const el = e.currentTarget as HTMLElement
   const r = el.getBoundingClientRect()
-  const px = (e.clientX - r.left) / r.width - 0.5   // -0.5 .. 0.5
+  const px = (e.clientX - r.left) / r.width - 0.5
   const py = (e.clientY - r.top) / r.height - 0.5
   tilt.value = `rotateY(${px * 8}deg) rotateX(${-py * 8}deg)`
 }
@@ -60,7 +61,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* BAZA (mobil): sadə, statik, depth üçün yüngül kölgə */
 .hero__card {
   background: var(--card);
   border-radius: 18px;
@@ -70,15 +70,20 @@ onMounted(() => {
   transform-style: preserve-3d;
   will-change: transform;
 }
+.hero__card h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin: 0 0 .5rem; }
+.hero__card > p { color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.2rem); margin: .25rem 0; }
 
-/* GÜCLƏNDİRMƏ (desktop + mouse): 3D perspektiv */
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
   .hero { perspective: 900px; }
 }
-.links > a{
-  padding:4px;
+
+.links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.links > a {
+  padding: .5rem .9rem; border: 1px solid var(--ink); border-radius: 999px;
+  text-decoration: none; font-size: .9rem; transition: background .2s, color .2s;
 }
-/* BAZA (mobil): təmiz kart, depth üçün kölgə */
+.links > a:hover { background: var(--ink); color: var(--bg); }
+
 .exp-card {
   background: var(--card);
   border-radius: 14px;
@@ -86,7 +91,6 @@ onMounted(() => {
   box-shadow: 0 6px 20px rgba(0,0,0,.06);
   margin-block: 1rem;
 }
-/* GÜCLƏNDİRMƏ (desktop + mouse): hover-da yüngül qalxma + əyilmə */
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
   .exp-card {
     transition: transform .25s ease, box-shadow .25s ease;
@@ -97,16 +101,7 @@ onMounted(() => {
     box-shadow: 0 18px 40px rgba(0,0,0,.12);
   }
 }
+
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
-
-.hero__card h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin: 0 0 .5rem; }
-.hero__card > p { color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.2rem); margin: .25rem 0; }
-
-.links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
-.links > a {
-  padding: .5rem .9rem; border: 1px solid var(--ink); border-radius: 999px;
-  text-decoration: none; font-size: .9rem; transition: background .2s, color .2s;
-}
-.links > a:hover { background: var(--ink); color: var(--bg); }
 </style>

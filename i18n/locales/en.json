@@ -1,0 +1,23 @@
+{
+  "nav": { "home": "Home", "projects": "Projects" },
+  "seo": {
+    "title": "Rahima Salmanova — Frontend Developer",
+    "description": "Frontend developer with ~5 years building Vue.js & Nuxt applications, specialized in advertising platforms. Open to frontend/senior roles — Baku & remote"
+  },
+  "hero": {
+    "role": "Frontend Developer — Vue.js / Nuxt · ~5 years · advertising platforms",
+    "tagline": "I build advertising platforms end-to-end — from architecture to launch — with a focus on performance, reusable systems, and clean UX."
+  },
+  "experience": {
+    "title": "Experience",
+    "activityLink": "My live GitHub projects →",
+    "newmedia": {
+      "title": "New Media Azerbaijan — Frontend Developer",
+      "desc": "Building a TypeScript-driven Vue/Nuxt advertising platform integrated with Google Ads, Meta, TikTok, YouTube, DV360, Telegram and Twitter. Led file-upload, advanced reporting and payment modules; drove a shared design system and performance budgets. ~30% revenue uplift in the first quarter post-release."
+    },
+    "adviad": {
+      "title": "Adviad — Frontend Developer",
+      "desc": "Architected and led a cross-channel advertising platform from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times."
+    }
+  }
+}

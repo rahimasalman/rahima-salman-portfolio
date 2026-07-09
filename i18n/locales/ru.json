@@ -1,0 +1,8 @@
+{
+  "nav": { "home": "Ana səhifə", "projects": "Layihələr" },
+  "hero": {
+    "role": "Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları",
+    "tagline": "Reklam platformalarını sıfırdan prod-a çıxarıram — performans, təkrar-istifadə və təmiz UX fokusu ilə."
+  },
+  "experience": { "title": "Təcrübə", "activityLink": "Canlı GitHub layihələrim →" }
+}
