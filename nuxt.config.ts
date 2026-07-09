@@ -2,7 +2,18 @@ export default defineNuxtConfig({
     $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
-    modules: ['@nuxtjs/sitemap', '@nuxt/fonts'],
+    modules: ['@nuxtjs/sitemap', '@nuxt/fonts', '@nuxtjs/i18n'],
+    i18n: {
+        defaultLocale: 'en',
+        strategy: 'prefix_except_default',
+        locales: [
+            { code: 'en', name: 'English',      file: 'en.json' },
+            { code: 'az', name: 'Azərbaycanca', file: 'az.json' },
+            { code: 'ru', name: 'Русский',      file: 'ru.json' },
+            { code: 'es', name: 'Español',      file: 'es.json' },
+            { code: 'de', name: 'Deutsch',      file: 'de.json' },
+        ],
+    },
     css: ['~/assets/css/main.css'],
     site: {
         url: 'https://rahimasalman.netlify.app',
