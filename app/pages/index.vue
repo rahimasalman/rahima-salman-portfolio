@@ -3,7 +3,7 @@
     <!-- HERO -->
     <section class="hero reveal" @mousemove="onMove" @mouseleave="onLeave">
       <div class="hero__card" :style="{ transform: tilt }">
-        <h1>Rahima Salmanova</h1>
+        <h1>Rahima Salman</h1>
         <p>{{ $t('hero.role') }}</p>
         <p>{{ $t('hero.tagline') }}</p>
         <div class="links">
@@ -104,4 +104,11 @@ onMounted(() => {
 
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
+.footer {
+  margin-top: clamp(3rem, 10vh, 6rem);
+  padding-block: 2rem;
+  border-top: 1px solid rgba(0,0,0,.08);
+  font-size: .85rem; color: var(--muted);
+}
+.footer a { color: var(--accent); text-decoration: none; }
 </style>

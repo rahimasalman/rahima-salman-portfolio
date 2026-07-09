@@ -18,6 +18,9 @@
       </div>
     </nav>
     <slot />
+    <footer class="footer">
+      <p>© {{ new Date().getFullYear() }} Rahima Salman· <a href="mailto:rahimasalman7@gmail.com">rahimasalman7@gmail.com</a></p>
+    </footer>
   </div>
 </template>
 
