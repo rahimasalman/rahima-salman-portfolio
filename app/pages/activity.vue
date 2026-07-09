@@ -7,9 +7,9 @@ const { data: repos, pending, error } = await useFetch(
 
 <template>
   <main>
-    <h1>Son GitHub layihələrim</h1>
-    <p v-if="pending">Yüklənir...</p>
-    <p v-else-if="error">Xəta baş verdi.</p>
+    <h1>{{ $t('activity.title') }}</h1>
+    <p v-if="pending">{{ $t('activity.loading') }}</p>
+    <p v-else-if="error">{{ $t('activity.error') }}</p>
     <ul v-else>
       <li v-for="repo in repos" :key="repo.id">
         <a :href="repo.html_url" target="_blank">{{ repo.name }}</a>

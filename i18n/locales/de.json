@@ -19,5 +19,10 @@
       "title": "Adviad — Frontend-Entwicklerin",
       "desc": "Konzeption und Leitung einer kanalübergreifenden Werbeplattform vom Konzept bis zur Produktion in einem Startup, das auf 10 Mio. USD ARR wuchs — Beitrag zu ~45% Umsatzsteigerung und 15% schnelleren Ladezeiten."
     }
+  },
+  "activity": {
+    "title": "Meine neuesten GitHub-Projekte",
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schiefgelaufen."
   }
 }

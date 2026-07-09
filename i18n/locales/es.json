@@ -19,5 +19,10 @@
       "title": "Adviad — Desarrolladora Frontend",
       "desc": "Diseñé y lideré una plataforma publicitaria multicanal desde el concepto hasta producción en una startup que creció hasta $10M ARR — contribuyendo a un aumento de ingresos de ~45% y un 15% más de velocidad de carga."
     }
+  },
+  "activity": {
+    "title": "Mis proyectos más recientes en GitHub",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error."
   }
 }

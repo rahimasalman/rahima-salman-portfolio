@@ -19,5 +19,10 @@
       "title": "Adviad — Frontend Developer",
       "desc": "Architected and led a cross-channel advertising platform from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times."
     }
+  },
+  "activity": {
+    "title": "My latest GitHub projects",
+    "loading": "Loading...",
+    "error": "Something went wrong."
   }
 }

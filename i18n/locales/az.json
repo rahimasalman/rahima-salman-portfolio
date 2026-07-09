@@ -19,5 +19,10 @@
       "title": "Adviad — Frontend Developer",
       "desc": "Cross-channel reklam platformasını sıfırdan prod-a apardım — $10M ARR-a çatan startapda ~45% gəlir artımı və 15% daha sürətli yüklənmə."
     }
+  },
+  "activity": {
+    "title": "Son GitHub layihələrim",
+    "loading": "Yüklənir...",
+    "error": "Xəta baş verdi."
   }
 }
