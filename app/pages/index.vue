@@ -6,7 +6,7 @@
       <h1>Rahima Salmanova</h1>
       <p>Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları (ads-tech)</p>
 <!--        TODO: Add a brief tagline -->
-      <p><!-- 1-2 cümlə tagline: sən kimsən, nədə güclüsən --></p>
+      <p>I build advertising platforms end-to-end — from architecture to launch — with a focus on performance, reusable systems, and clean UX.</p>
       <div class="links">
         <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
@@ -21,13 +21,13 @@
       <article class="exp-card">
         <h3>New Media Azerbaijan — Frontend Developer</h3>
 <!--        TODO: Add a brief description of your role and responsibilities -->
-        <p><!-- TS Vue/Nuxt ads platform, +30% revenue, modullar... --></p>
+        <p>Building a TypeScript-driven Vue/Nuxt advertising platform integrated with Google Ads, Meta, TikTok, YouTube, DV360, Telegram and Twitter. Led file-upload, advanced reporting and payment modules; drove a shared design system and performance budgets. ~30% revenue uplift in the first quarter post-release.</p>
       </article>
       <article class="exp-card">
         <h3>Adviad — Frontend Developer</h3>
-        <p><!-- cross-channel ads platform, +45% revenue... --></p>
+        <p>Architected and led a cross-channel advertising platform (adviad.com) from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times.</p>
       </article>
-      <p><NuxtLink to="/activity">Canlı GitHub layihələrim →</NuxtLink></p>
+      <p><NuxtLink to="/activity">Live GitHub projects →</NuxtLink></p>
     </section>
   </main>
 </template>
