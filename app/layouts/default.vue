@@ -1,19 +1,26 @@
 <template>
   <div>
     <nav class="nav">
-      <NuxtLink to="/" class="nav__brand">Rahima</NuxtLink>
+      <NuxtLink :to="localePath('/')" class="nav__brand">Rahima</NuxtLink>
       <div class="nav__right">
         <div class="nav__links">
-          <NuxtLink to="/">{{ $t('nav.home') }}</NuxtLink>
-          <NuxtLink to="/activity">{{ $t('nav.projects') }}</NuxtLink>
+          <NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink>
+          <NuxtLink :to="localePath('/activity')">{{ $t('nav.projects') }}</NuxtLink>
         </div>
-        <div class="lang">
-          <NuxtLink
-              v-for="l in locales" :key="l.code"
-              :to="switchLocalePath(l.code)"
-              class="lang__item"
-              :class="{ 'is-active': l.code === locale }"
-          >{{ l.code.toUpperCase() }}</NuxtLink>
+        <div class="lang" ref="langRef">
+          <button class="lang__toggle" @click="isOpen = !isOpen" :aria-expanded="isOpen">
+            {{ locale.toUpperCase() }}
+            <span class="lang__caret">⌄</span>
+          </button>
+          <ul v-if="isOpen" class="lang__menu">
+            <li v-for="l in locales" :key="l.code">
+              <NuxtLink
+                  :to="switchLocalePath(l.code)"
+                  :class="{ 'is-active': l.code === locale }"
+                  @click="isOpen = false"
+              >{{ l.name }}</NuxtLink>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -27,6 +34,16 @@
 <script setup lang="ts">
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
+
+const isOpen = ref(false)
+const langRef = ref<HTMLElement | null>(null)
+
+function onClickOutside(e: MouseEvent) {
+  if (langRef.value && !langRef.value.contains(e.target as Node)) isOpen.value = false
+}
+onMounted(() => document.addEventListener('click', onClickOutside))
+onUnmounted(() => document.removeEventListener('click', onClickOutside))
 </script>
 
 <style scoped>
@@ -36,8 +53,26 @@ const switchLocalePath = useSwitchLocalePath()
 .nav__links { display: flex; gap: 1.25rem; font-size: .95rem; }
 .nav__links a { text-decoration: none; transition: color .2s; }
 .nav__links a:hover, .nav__links a.router-link-active { color: var(--accent); }
-.lang { display: flex; gap: .4rem; }
-.lang__item { text-decoration: none; font-size: .72rem; letter-spacing: .05em; opacity: .5; transition: opacity .2s, color .2s; }
-.lang__item:hover { opacity: 1; }
-.lang__item.is-active { opacity: 1; color: var(--accent); }
+.lang { position: relative; }
+.lang__toggle {
+  display: flex; align-items: center; gap: .3rem;
+  background: none; border: 1px solid rgba(0,0,0,.12); border-radius: 999px;
+  padding: .3rem .7rem; font-size: .72rem; letter-spacing: .05em;
+  color: var(--ink); cursor: pointer; transition: border-color .2s;
+}
+.lang__toggle:hover { border-color: var(--accent); }
+.lang__caret { display: inline-flex; align-items: center; line-height: 1; font-size: .6rem; opacity: .6; padding-bottom:6px}
+.lang__menu {
+  position: absolute; top: calc(100% + .5rem); right: 0;
+  background: var(--bg); border: 1px solid rgba(0,0,0,.1); border-radius: .6rem;
+  padding: .35rem; min-width: 8rem; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  display: flex; flex-direction: column; gap: .1rem; z-index: 20;
+  list-style: none; margin: 0;
+}
+.lang__menu a {
+  display: block; padding: .4rem .6rem; border-radius: .4rem;
+  font-size: .82rem; text-decoration: none; color: var(--ink); transition: background .15s;
+}
+.lang__menu a:hover { background: rgba(0,0,0,.04); }
+.lang__menu a.is-active { color: var(--accent); font-weight: 600; }
 </style>

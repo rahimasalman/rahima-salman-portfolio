@@ -3,4 +3,7 @@ Disallow:
 User-Agent: *
 Disallow:
 
+User-agent: *
+Allow: /
+
 Sitemap: https://rahimasalman.netlify.app/sitemap.xml

@@ -1,8 +1,23 @@
 {
-  "nav": { "home": "Ana səhifə", "projects": "Layihələr" },
-  "hero": {
-    "role": "Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları",
-    "tagline": "Reklam platformalarını sıfırdan prod-a çıxarıram — performans, təkrar-istifadə və təmiz UX fokusu ilə."
+  "nav": { "home": "Inicio", "projects": "Proyectos" },
+  "seo": {
+    "title": "Rahima Salman — Desarrolladora Frontend",
+    "description": "Desarrolladora frontend con ~5 años construyendo aplicaciones Vue.js y Nuxt, especializada en plataformas publicitarias. Abierta a roles frontend/senior — Bakú y remoto."
   },
-  "experience": { "title": "Təcrübə", "activityLink": "Canlı GitHub layihələrim →" }
+  "hero": {
+    "role": "Desarrolladora Frontend — Vue.js / Nuxt · ~5 años · plataformas publicitarias",
+    "tagline": "Construyo plataformas publicitarias de principio a fin —desde la arquitectura hasta el lanzamiento— con foco en rendimiento, sistemas reutilizables y UX limpia."
+  },
+  "experience": {
+    "title": "Experiencia",
+    "activityLink": "Mis proyectos en GitHub en vivo →",
+    "newmedia": {
+      "title": "New Media Azerbaijan — Desarrolladora Frontend",
+      "desc": "Desarrollo de una plataforma publicitaria Vue/Nuxt basada en TypeScript, integrada con Google Ads, Meta, TikTok, YouTube, DV360, Telegram y Twitter. Lideré los módulos de subida de archivos, reportes avanzados y pagos; impulsé un sistema de diseño compartido y presupuestos de rendimiento. ~30% de aumento en ingresos en el primer trimestre tras el lanzamiento."
+    },
+    "adviad": {
+      "title": "Adviad — Desarrolladora Frontend",
+      "desc": "Diseñé y lideré una plataforma publicitaria multicanal desde el concepto hasta producción en una startup que creció hasta $10M ARR — contribuyendo a un aumento de ingresos de ~45% y un 15% más de velocidad de carga."
+    }
+  }
 }
