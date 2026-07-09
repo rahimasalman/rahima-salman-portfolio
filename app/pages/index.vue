@@ -5,6 +5,7 @@
       <div class="hero__card" :style="{ transform: tilt }">
       <h1>Rahima Salmanova</h1>
       <p>Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları (ads-tech)</p>
+<!--        TODO: Add a brief tagline -->
       <p><!-- 1-2 cümlə tagline: sən kimsən, nədə güclüsən --></p>
       <div class="links">
         <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
@@ -17,11 +18,12 @@
     <!-- TƏCRÜBƏ -->
     <section class="reveal">
       <h2>Təcrübə</h2>
-      <article>
+      <article class="exp-card">
         <h3>New Media Azerbaijan — Frontend Developer</h3>
+<!--        TODO: Add a brief description of your role and responsibilities -->
         <p><!-- TS Vue/Nuxt ads platform, +30% revenue, modullar... --></p>
       </article>
-      <article>
+      <article class="exp-card">
         <h3>Adviad — Frontend Developer</h3>
         <p><!-- cross-channel ads platform, +45% revenue... --></p>
       </article>
@@ -97,4 +99,14 @@ onMounted(() => {
 }
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+.hero__card h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin: 0 0 .5rem; }
+.hero__card > p { color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.2rem); margin: .25rem 0; }
+
+.links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.links > a {
+  padding: .5rem .9rem; border: 1px solid var(--ink); border-radius: 999px;
+  text-decoration: none; font-size: .9rem; transition: background .2s, color .2s;
+}
+.links > a:hover { background: var(--ink); color: var(--bg); }
 </style>
