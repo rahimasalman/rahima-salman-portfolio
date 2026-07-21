@@ -24,5 +24,29 @@
     "title": "My latest GitHub projects",
     "loading": "Loading...",
     "error": "Something went wrong."
+  },
+  "error": {
+    "notFound": {
+      "title": "Page not found",
+      "desc": "The page you're looking for doesn't exist or has been moved."
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "desc": "An unexpected error occurred. Please try again."
+    },
+    "backHome": "Back to home"
+  },
+  "projects": {
+    "title": "Selected Projects",
+    "subtitle": "A few things I've built.",
+    "viewAll": "View all projects →",
+    "technologies": "Technologies",
+    "viewProject": "View project →",
+    "items": {
+      "demo-issue-tracker": { "description": "A simple issue tracking application." },
+      "react-tetris-game": { "description": "A classic Tetris game built with React." },
+      "rahima-yelpcamp": { "description": "A Yelp-like application for campgrounds." },
+      "vue-countdown-timer": { "description": "A simple countdown timer built with Vue." }
+    }
   }
 }

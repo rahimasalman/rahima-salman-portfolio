@@ -24,5 +24,29 @@
     "title": "Mis proyectos más recientes en GitHub",
     "loading": "Cargando...",
     "error": "Ocurrió un error."
+  },
+  "error": {
+    "notFound": {
+      "title": "Página no encontrada",
+      "desc": "La página que buscas no existe o ha sido movida."
+    },
+    "generic": {
+      "title": "Ocurrió un error",
+      "desc": "Se produjo un error inesperado. Por favor, inténtalo de nuevo."
+    },
+    "backHome": "Volver al inicio"
+  },
+  "projects": {
+    "title": "Proyectos destacados",
+    "subtitle": "Algunas cosas que he construido.",
+    "viewAll": "Ver todos los proyectos →",
+    "technologies": "Tecnologías",
+    "viewProject": "Ver proyecto →",
+    "items": {
+      "demo-issue-tracker": { "description": "Una aplicación sencilla de seguimiento de incidencias." },
+      "react-tetris-game": { "description": "Un clásico juego de Tetris hecho con React." },
+      "rahima-yelpcamp": { "description": "Una aplicación tipo Yelp para campamentos." },
+      "vue-countdown-timer": { "description": "Un temporizador de cuenta regresiva hecho con Vue." }
+    }
   }
 }

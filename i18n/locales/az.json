@@ -24,5 +24,29 @@
     "title": "Son GitHub layihələrim",
     "loading": "Yüklənir...",
     "error": "Xəta baş verdi."
+  },
+  "error": {
+    "notFound": {
+      "title": "Səhifə tapılmadı",
+      "desc": "Axtardığınız səhifə mövcud deyil və ya köçürülüb."
+    },
+    "generic": {
+      "title": "Nəsə xəta baş verdi",
+      "desc": "Gözlənilməz xəta baş verdi. Zəhmət olmasa yenidən cəhd edin."
+    },
+    "backHome": "Ana səhifəyə qayıt"
+  },
+  "projects": {
+    "title": "Seçilmiş işlər",
+    "subtitle": "Qurduğum bəzi işlər.",
+    "viewAll": "Bütün layihələrə bax →",
+    "technologies": "Texnologiyalar",
+    "viewProject": "Layihəyə bax →",
+    "items": {
+      "demo-issue-tracker": { "description": "Sadə problem (issue) izləmə tətbiqi." },
+      "react-tetris-game": { "description": "React ilə qurulmuş klassik Tetris oyunu." },
+      "rahima-yelpcamp": { "description": "Kamp yerləri üçün Yelp bənzəri tətbiq." },
+      "vue-countdown-timer": { "description": "Vue ilə qurulmuş sadə geri sayğac." }
+    }
   }
 }

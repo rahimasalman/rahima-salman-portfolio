@@ -24,5 +24,29 @@
     "title": "Meine neuesten GitHub-Projekte",
     "loading": "Wird geladen...",
     "error": "Etwas ist schiefgelaufen."
+  },
+  "error": {
+    "notFound": {
+      "title": "Seite nicht gefunden",
+      "desc": "Die gesuchte Seite existiert nicht oder wurde verschoben."
+    },
+    "generic": {
+      "title": "Etwas ist schiefgelaufen",
+      "desc": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut."
+    },
+    "backHome": "Zurück zur Startseite"
+  },
+  "projects": {
+    "title": "Ausgewählte Projekte",
+    "subtitle": "Einige meiner Arbeiten.",
+    "viewAll": "Alle Projekte ansehen →",
+    "technologies": "Technologien",
+    "viewProject": "Projekt ansehen →",
+    "items": {
+      "demo-issue-tracker": { "description": "Eine einfache Anwendung zur Problemverfolgung." },
+      "react-tetris-game": { "description": "Ein klassisches Tetris-Spiel mit React." },
+      "rahima-yelpcamp": { "description": "Eine Yelp-ähnliche App für Campingplätze." },
+      "vue-countdown-timer": { "description": "Ein einfacher Countdown-Timer mit Vue." }
+    }
   }
 }
