@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="nav">
-      <NuxtLink :to="localePath('/')" class="nav__brand">Rahima</NuxtLink>
+      <NuxtLink :to="localePath('/')" class="nav__brand">rahimasalman</NuxtLink>
       <div class="nav__right">
         <div class="nav__links">
           <NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink>

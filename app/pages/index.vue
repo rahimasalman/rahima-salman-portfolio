@@ -25,13 +25,41 @@
         <h3>{{ $t('experience.adviad.title') }}</h3>
         <p>{{ $t('experience.adviad.desc') }}</p>
       </article>
-      <p><NuxtLink to="/activity">{{ $t('experience.activityLink') }}</NuxtLink></p>
     </section>
+
+    <!-- PROJECTS -->
+    <section class="reveal">
+      <h2>{{ $t('projects.title') }}</h2>
+      <p>{{ $t('projects.subtitle') }}</p>
+      <article class="exp-card" v-for="project in featured" :key="project.slug">
+        <div >
+          <h3>{{ project.title }}</h3>
+          <p>{{ $t('projects.items.' + project.slug + '.description') }}</p>
+          <NuxtLink :to="localePath('/projects/' + project.slug)">{{ $t('projects.viewProject') }}</NuxtLink>
+        </div>
+      </article>
+      <div class="projects__more">
+        <NuxtLink :to="localePath('/projects')" class="view-all">
+          {{ $t('projects.viewAll') }}
+        </NuxtLink>
+        <NuxtLink :to="localePath('/activity')" class="view-live">
+          {{ $t('experience.activityLink') }}
+        </NuxtLink>
+      </div>
+    </section>
+
   </main>
 </template>
 
 <script setup lang="ts">
+import { projects } from '~/data/projects'
+
 const { t } = useI18n()
+
+const localePath = useLocalePath()
+
+const featured = projects.slice(0, 3)
+
 
 useSeoMeta({
   title: () => t('seo.title'),
@@ -111,4 +139,24 @@ onMounted(() => {
   font-size: .85rem; color: var(--muted);
 }
 .footer a { color: var(--accent); text-decoration: none; }
+
+.projects__more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 2rem;
+}
+.view-live {
+  font-size: .85rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.view-live:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 </style>
