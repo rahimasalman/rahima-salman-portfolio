@@ -1,16 +1,40 @@
 :root {
-    /* signature palitra — isti/organik, klişe gradient YOX */
+    /* tipografiya + layout — temadan asılı DEYİL (hər iki rejimdə eyni) */
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Space Grotesk', system-ui, sans-serif;
+    --gutter: clamp(1.25rem, 5vw, 4rem);   /* qıraq boşluğu — kiçik ekranda az, böyükdə çox */
+    --maxw: 1100px;                         /* məzmun çox enlənməsin */
+
+    /* signature palitra — LIGHT (default) — isti/organik, klişe gradient YOX */
     --bg:     #f4f1ea;   /* cream/paper */
     --ink:    #1a1714;   /* deep ink */
     --muted:  #6b6459;
     --accent: #c2502e;   /* terracotta — bir cəsarətli aksent */
     --card:   #fffdf8;
 
-    /* tipografiya — xarakterli, Inter YOX */
-    --font-display: 'Fraunces', Georgia, serif;
-    --font-body:    'Space Grotesk', system-ui, sans-serif;
-    --gutter: clamp(1.25rem, 5vw, 4rem);   /* qıraq boşluğu — kiçik ekranda az, böyükdə çox */
-    --maxw: 1100px;                         /* məzmun çox enlənməsin */
+    /* temaya görə dəyişən neytral çalarlar (hardcoded rgba əvəzinə — dark-da düzgün görünsün) */
+    --border:      rgba(0,0,0,.12);
+    --border-soft: rgba(0,0,0,.10);
+    --hover:       rgba(0,0,0,.04);
+    --shadow:      rgba(0,0,0,.08);
+
+    color-scheme: light;   /* native scrollbar/form elementləri də uyğunlaşsın */
+}
+
+/* DARK — Cool charcoal (soyuq, modern) — terracotta aksent isti ruhu saxlayır */
+:root[data-theme="dark"] {
+    --bg:     #16181d;   /* soyuq charcoal — gözə rahat, qara deyil */
+    --ink:    #e7e9ee;
+    --muted:  #9aa0aa;
+    --accent: #e0673f;   /* terracotta — tünd fonda kontrast üçün bir az parlaq */
+    --card:   #1f232a;
+
+    --border:      rgba(255,255,255,.14);
+    --border-soft: rgba(255,255,255,.10);
+    --hover:       rgba(255,255,255,.06);
+    --shadow:      rgba(0,0,0,.45);
+
+    color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -32,6 +56,7 @@ body {
     color: var(--ink);
     font-family: var(--font-body);
     line-height: 1.6;
+    transition: background-color .3s ease, color .3s ease;   /* rejim keçidi yumşaq olsun */
 }
 h1, h2, h3 {
     font-family: var(--font-display);
@@ -41,7 +66,7 @@ h1, h2, h3 {
 }
 a { color: inherit; }
 
-/* əlçatanlıq: hərəkəti azaltmaq istəyənlərə hörmət */
+/* əlçatanlıq: hərəkəti azaltmaq istəyənlərə hörmət (tema keçid transition-u da daxil) */
 @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

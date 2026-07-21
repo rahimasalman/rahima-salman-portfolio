@@ -3,6 +3,21 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
     modules: ['@nuxtjs/sitemap', '@nuxt/fonts', '@nuxtjs/i18n'],
+    app: {
+        head: {
+            // SSG-də HTML build-də statikdir → server istifadəçinin temasını bilmir.
+            // Bu inline skript səhifə BOYANMADAN əvvəl işləyir və flash-ı (ağ/qara sıçrayış) aradan qaldırır:
+            // localStorage-dakı seçim → yoxdursa sistem seçimi (prefers-color-scheme).
+            htmlAttrs: { 'data-theme': 'light' },   // SSR/prerender üçün default; skript client-də üstündən yazır
+            script: [
+                {
+                    innerHTML:
+                        '!function(){try{var t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}catch(e){}}();',
+                    tagPosition: 'head',
+                },
+            ],
+        },
+    },
     i18n: {
         defaultLocale: 'en',
         strategy: 'prefix_except_default',
