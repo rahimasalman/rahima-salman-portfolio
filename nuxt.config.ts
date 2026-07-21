@@ -25,5 +25,7 @@ export default defineNuxtConfig({
         // '/activity': {swr: 3600},      // 1 saat keş: köhnəni ver, arxada təzələ
         '/activity': {isr: 3600},      // 1 saat keş: CDN-də statik kimi saxla, N saniyədən sonra təzələ
         // '/activity': {isr: true},       // növbəti deploy-a qədər keş (tam statik kimi)
+        '/projects': { prerender: true },
+        '/projects/**': { prerender: true },
     }
 })

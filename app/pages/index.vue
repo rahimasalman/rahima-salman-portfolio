@@ -60,7 +60,6 @@ const localePath = useLocalePath()
 
 const featured = projects.slice(0, 3)
 
-
 useSeoMeta({
   title: () => t('seo.title'),
   description: () => t('seo.description'),
