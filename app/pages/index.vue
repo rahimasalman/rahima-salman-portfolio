@@ -3,7 +3,7 @@
     <!-- HERO -->
     <section class="hero">
       <p class="hero__kicker">{{ $t('hero.role') }}</p>
-      <h1 class="hero__name">Rahima Salman</h1>
+      <h1 class="hero__name"><span>Rahima</span><span>Salman</span></h1>
       <p class="hero__tagline">{{ $t('hero.tagline') }}</p>
       <div class="hero__links">
         <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
@@ -66,7 +66,6 @@ useSeoMeta({
   ogType: 'website',
 })
 
-
 onMounted(() => {
   const els = document.querySelectorAll('.reveal')
   const io = new IntersectionObserver((entries) => {
@@ -82,31 +81,76 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* ==========================================================
+   HERO — baza (mobil). Media query-siz yazılan = mobil.
+   ========================================================== */
 .hero {
   display: grid;
+  align-content: start;           /* addım 6: bütün sətir dəstini birlikdə mərkəzə yığır */
+  min-height: min(78svh, 800px);
 }
 
+/* şaquli ritm: brauzerin defaultunu öldür, sonra fərdi boşluq ver */
+.hero > *     { margin: 0; }
+.hero > * + * { margin-block-start: var(--flow, 2rem); }
+
+.hero__kicker {
+  font-size: clamp(.75rem, .72rem + .15vw, .85rem);
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+.hero__name {
+  --flow: .75rem;                              /* kicker-ə SIX — bir blok kimi oxunurlar */
+  font-size: clamp(3rem, 1rem + 9vw, 8rem);
+  font-weight: 800;                            /* qlobal h1-in 600-ünü üstələyir */
+  line-height: 0.88;                           /* böyük şriftdə sətirlər sıxılır */
+  letter-spacing: -0.035em;                    /* böyük şriftdə hərflər sıxılır */
+}
+
+.hero__name span { display: block; }           /* addım 3: iki sətir = sıx blok */
+
+.hero__tagline {
+  --flow: clamp(2rem, 5vh, 4rem);              /* GENİŞ — fikir dəyişir, nəfəs lazımdır */
+  font-weight: 300;                            /* 800 vs 300 = çəki kontrastı */
+  font-size: clamp(1.05rem, 1rem + .35vw, 1.35rem);
+  line-height: 1.5;
+  max-width: 34ch;                             /* dar sütun — ad geniş, bu dar = forma kontrastı */
+  text-wrap: balance;
+}
+
+.hero__links {
+  display: flex;                               /* addım 4: məsafəni HTML boşluğu yox, gap idarə edir */
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: .9rem;
+}
+
+.hero__links a {
+  text-decoration-thickness: 1px;              /* editorial: nazik altxətt, pill YOX */
+  text-underline-offset: .3em;
+  transition: color .2s;
+}
+
+.hero__links a:hover { color: var(--accent); } /* addım 5: hero-dakı YEGANƏ aksent */
+
+/* ==========================================================
+   HERO — 768px+. Burada YALNIZ ekran enindən asılı olanlar.
+   ========================================================== */
 @media (min-width: 768px) {
   .hero {
     grid-template-columns: repeat(12, 1fr);
-    column-gap: clamp(1rem, 3vw, 2rem); /* clamp() = "bu dəyər sərbəst dəyişsin, amma bu iki hədd arasında"*/
-    min-height: min(88svh, 900px); /* small viewport height */
-    align-content: center;
+    column-gap: clamp(1rem, 3vw, 2rem);
   }
-  .hero__kicker {
-    grid-column: 1/8;
-  }
-  .hero__name {
-    grid-column: 1/11;
-  }
-  .hero__tagline {
-    grid-column: 6/12;
-  }
-  .hero__links {
-    grid-column: 1/8;
-  }
+  .hero__kicker  { grid-column: 1/8; }
+  .hero__name    { grid-column: 1/11; }
+  .hero__tagline { grid-column: 6/12; }        /* sağa sürüşür → diaqonal */
+  .hero__links   { grid-column: 1/8; }
 }
 
+/* ==========================================================
+   Qalan bölmələr
+   ========================================================== */
 .exp-card {
   background: var(--card);
   border-radius: 14px;
@@ -138,11 +182,6 @@ onMounted(() => {
   transform: none;
 }
 
-.footer a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
 .projects__more {
   display: flex;
   flex-direction: column;
@@ -163,5 +202,4 @@ onMounted(() => {
   color: var(--accent);
   border-color: var(--accent);
 }
-
 </style>
