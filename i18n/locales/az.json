@@ -2,10 +2,10 @@
   "nav": { "home": "Ana səhifə", "projects": "Layihələr" },
   "seo": {
     "title": "Rahima Salman — Frontend Developer",
-    "description": "Vue.js və Nuxt tətbiqləri quran ~5 illik frontend developer, reklam platformalarında ixtisaslaşıb. Frontend/senior vakansiyalara açıq — Bakı və remote."
+    "description": "JavaScript və Vue.js tətbiqləri quran ~5 illik frontend developer, reklam platformalarında ixtisaslaşıb. Frontend/senior vakansiyalara açıq — Bakı və remote."
   },
   "hero": {
-    "role": "Frontend Developer — Vue.js / Nuxt · ~5 il · reklam platformaları",
+    "role": "Frontend Developer — JavaScript / Vue.js / TypeScript · ~5 il ·",
     "tagline": "Reklam platformalarını sıfırdan prod-a çıxarıram — performans, təkrar-istifadə və təmiz UX fokusu ilə."
   },
   "experience": {
