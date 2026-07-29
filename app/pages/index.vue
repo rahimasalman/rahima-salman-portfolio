@@ -86,8 +86,8 @@ onMounted(() => {
    ========================================================== */
 .hero {
   display: grid;
-  align-content: start;           /* addım 6: bütün sətir dəstini birlikdə mərkəzə yığır */
-  min-height: min(78svh, 800px);
+  align-content: start;           /* mobil: mərkəzləmə YOX — nav+padding üstdədir, mərkəz aşağı sürüşür */
+  min-height: min(60svh, 800px);  /* small viewport height */
 }
 
 /* şaquli ritm: brauzerin defaultunu öldür, sonra fərdi boşluq ver */
@@ -141,6 +141,7 @@ onMounted(() => {
   .hero {
     grid-template-columns: repeat(12, 1fr);
     column-gap: clamp(1rem, 3vw, 2rem);
+    align-content: center;        /* geniş ekranda şaquli yer boldur → sətir dəstini birlikdə mərkəzə yığ */
   }
   .hero__kicker  { grid-column: 1/8; }
   .hero__name    { grid-column: 1/11; }
