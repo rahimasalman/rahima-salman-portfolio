@@ -65,7 +65,7 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
 
 <style scoped>
 .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-block: 1.25rem; }
-.nav__brand { font-family: var(--font-display), sans-serif; font-size: 1.25rem; }
+.nav__brand { font-family: var(--font-display), sans-serif; font-size: 1.25rem;  text-decoration: none}
 .nav__right { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .nav__links { display: flex; gap: 1.25rem; font-size: .95rem; }
 .nav__links a { text-decoration: none; transition: color .2s; }
