@@ -172,11 +172,9 @@ onMounted(() => {
 .hero + section { margin-block-start: clamp(3rem, 12vh, 6rem); }
 
 .exp-card {
-  background: var(--card);
-  border-radius: 14px;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
-  margin-block: 1rem;
+  padding-block: clamp(1.5rem, 4vw, 2.25rem);
+  border-block-start: 1px solid var(--border);
+  margin-block: 0;
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
