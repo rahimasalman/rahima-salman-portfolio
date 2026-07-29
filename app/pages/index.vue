@@ -87,20 +87,26 @@ onMounted(() => {
 .hero {
   display: grid;
   align-content: start;           /* mobil: mərkəzləmə YOX — nav+padding üstdədir, mərkəz aşağı sürüşür */
-  min-height: min(60svh, 800px);  /* small viewport height */
+
 }
 
 /* şaquli ritm: brauzerin defaultunu öldür, sonra fərdi boşluq ver */
-.hero > *     { margin: 0; }
+.hero > * {
+  margin: 0;
+  animation: rise .6s ease-out backwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
 .hero > * + * { margin-block-start: var(--flow, 2rem); }
 
 .hero__kicker {
+  --i: 0;
   font-size: clamp(.75rem, .72rem + .15vw, .85rem);
   letter-spacing: .04em;
   color: var(--muted);
 }
 
 .hero__name {
+  --i: 1;
   --flow: .75rem;                              /* kicker-ə SIX — bir blok kimi oxunurlar */
   font-size: clamp(3rem, 1rem + 9vw, 8rem);
   font-weight: 800;                            /* qlobal h1-in 600-ünü üstələyir */
@@ -111,6 +117,7 @@ onMounted(() => {
 .hero__name span { display: block; }           /* addım 3: iki sətir = sıx blok */
 
 .hero__tagline {
+  --i: 2;
   --flow: clamp(2rem, 5vh, 4rem);              /* GENİŞ — fikir dəyişir, nəfəs lazımdır */
   font-weight: 300;                            /* 800 vs 300 = çəki kontrastı */
   font-size: clamp(1.05rem, 1rem + .35vw, 1.35rem);
@@ -120,6 +127,7 @@ onMounted(() => {
 }
 
 .hero__links {
+  --i: 3;
   display: flex;                               /* addım 4: məsafəni HTML boşluğu yox, gap idarə edir */
   gap: 1.5rem;
   flex-wrap: wrap;
@@ -134,6 +142,10 @@ onMounted(() => {
 
 .hero__links a:hover { color: var(--accent); } /* addım 5: hero-dakı YEGANƏ aksent */
 
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
 /* ==========================================================
    HERO — 768px+. Burada YALNIZ ekran enindən asılı olanlar.
    ========================================================== */
@@ -142,6 +154,7 @@ onMounted(() => {
     grid-template-columns: repeat(12, 1fr);
     column-gap: clamp(1rem, 3vw, 2rem);
     align-content: center;        /* geniş ekranda şaquli yer boldur → sətir dəstini birlikdə mərkəzə yığ */
+    min-height: min(60svh, 800px);  /* small viewport height */
   }
   .hero__kicker  { grid-column: 1/8; }
   .hero__name    { grid-column: 1/11; }
@@ -155,6 +168,9 @@ onMounted(() => {
 /* ==========================================================
    Qalan bölmələr
    ========================================================== */
+
+.hero + section { margin-block-start: clamp(3rem, 12vh, 6rem); }
+
 .exp-card {
   background: var(--card);
   border-radius: 14px;
