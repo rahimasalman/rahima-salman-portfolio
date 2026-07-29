@@ -149,6 +149,9 @@ onMounted(() => {
   .hero__links   { grid-column: 1/8; }
 }
 
+:root[data-theme="light"] .hero__name { font-weight: 700; }
+/** :root[data-theme="light"] .hero__name { color: color-mix(in oklab, var(--ink) 88%, var(--bg)); } */
+
 /* ==========================================================
    Qalan bölmələr
    ========================================================== */
