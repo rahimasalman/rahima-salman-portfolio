@@ -166,47 +166,97 @@ onMounted(() => {
 /** :root[data-theme="light"] .hero__name { color: color-mix(in oklab, var(--ink) 88%, var(--bg)); } */
 
 /* ==========================================================
-   Qalan bölmələr
+   Qalan bölmələr — editorial dil (hero ilə eyni qrammatika)
    ========================================================== */
 
-.hero + section { margin-block-start: clamp(3rem, 12vh, 6rem); }
+/* 1) BÖLMƏLƏR ARASI VAHİD RİTM
+   hero də <section>-dır → TƏK qayda hamısını tutur.
+   (əvvəlki ayrıca `.hero + section` qaydası buna görə silindi — iki həqiqət mənbəyi olmasın) */
+main > section + section {
+  margin-block-start: clamp(3rem, 12vh, 6rem);
+}
 
+/* 2) BÖLMƏ DAXİLİ RİTM — hero-dakı eyni "flow" pattern.
+   :not(.hero) → hero-nun öz qaydaları var, ora qarışmırıq. */
+main > section:not(.hero) > * { margin: 0; }
+main > section:not(.hero) > * + * { margin-block-start: var(--flow, 1.5rem); }
+
+/* 3) BÖLMƏ BAŞLIĞI = ETİKET, ulduz deyil.
+   Hero kicker-in eyni forması → səhifə boyu təkrarlanan qrammatika. */
+main > section:not(.hero) > h2 {
+  font-family: var(--font-body);
+  font-size: clamp(.7rem, .68rem + .1vw, .78rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+}
+
+/* h2-dən DƏRHAL sonrakı p = alt başlıq → etiketə sıx yapışır */
+main > section:not(.hero) > h2 + p {
+  --flow: .5rem;
+  color: var(--muted);
+  max-width: 48ch;
+}
+
+/* 4) KARTLAR — "kart" deyil, EDITORIAL SİYAHI (fon/radius/kölgə yox, yalnız xətt) */
 .exp-card {
-  padding-block: clamp(1.5rem, 4vw, 2.25rem);
+  --flow: clamp(2rem, 5vh, 3rem);                   /* başlıqdan sonra ilk sətir */
+  padding-block: clamp(1.5rem, 4vw, 2.25rem);       /* ⚠️ `padding: 10px` silindi — clamp-i öldürürdü */
   border-block-start: 1px solid var(--border);
-  margin-block: 0;
 }
 
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .exp-card {
-    transition: transform .25s ease, box-shadow .25s ease;
-    transform-style: preserve-3d;
-  }
+/* sətirlər arası boşluğu margin yox, XƏTT + padding verir */
+.exp-card + .exp-card { --flow: 0; }
 
-  .exp-card:hover {
-    transform: translateY(-6px) rotateX(4deg);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
-  }
+/* sonuncu xətt: xəttsiz bitən siyahı "yarımçıq kəsilmiş" oxunur */
+.exp-card:last-of-type { border-block-end: 1px solid var(--border); }
+
+.exp-card h3,
+.exp-card p { margin: 0; }                          /* brauzer defaultu */
+
+.exp-card h3 {
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);    /* bölmənin ulduzu */
+  letter-spacing: -.02em;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
+.exp-card p {
+  margin-block-start: .6rem;
+  font-size: 1rem;
+  max-width: 62ch;
 }
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+.exp-card a {
+  display: inline-block;                            /* inline element margin-block qəbul etmir */
+  margin-block-start: 1rem;
+  font-size: .9rem;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+  transition: color .2s;
 }
 
+.exp-card a:hover { color: var(--accent); }
+
+/* ⚠️ hover-tilt + box-shadow bloku TAM SİLİNDİ:
+   kartsız/kölgəsiz dildə qalxma və kölgə ziddiyyətdir (squint test-in tapdığı problem). */
+
+/* 5) ALT LİNKLƏR — mərkəz YOX, səhifənin qalanı kimi sola bağlı */
 .projects__more {
+  --flow: clamp(2rem, 5vh, 3rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: .75rem;
-  margin-top: 2rem;
 }
+
+.view-all {
+  font-size: .9rem;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+  transition: color .2s;
+}
+
+.view-all:hover { color: var(--accent); }
 
 .view-live {
   font-size: .85rem;
@@ -219,5 +269,45 @@ onMounted(() => {
 .view-live:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+
+/* 6) REVEAL — dəyişmədi */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================
+   Bölmələr — 768px+ : hero-nun 12 sütunlu qrideri aşağıda davam edir
+   ========================================================== */
+@media (min-width: 768px) {
+  main > section:not(.hero) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* etiket öz sütununda "asılı" qalır — ölçü ilə yox, MÖVQE ilə görünür */
+  main > section:not(.hero) > h2 {
+    grid-column: 1 / 4;
+    grid-row: 1 / -1;        /* 1-ci sətirdən SONUNCUYA qədər — bütün bölmə boyu */
+    align-self: start;       /* uzanmasın, yuxarıda dursun */
+    position: sticky;
+    top: 2rem;
+  }
+
+  /* qalan hər şey sağ blokda; sağ kənar 12 = hero tagline-ın sağ kənarı */
+  main > section:not(.hero) > *:not(h2) {
+    grid-column: 4 / 12;
+  }
+
+  /* alt başlıq etiketlə yan-yana durur → onu aşağı itələyən boşluq lazım deyil */
+  main > section:not(.hero) > h2 + p { --flow: 0; }
 }
 </style>
