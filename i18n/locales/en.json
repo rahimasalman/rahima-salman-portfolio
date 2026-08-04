@@ -1,11 +1,11 @@
 {
   "nav": { "home": "Home", "projects": "Projects" },
   "seo": {
-    "title": "Rahima Salman — Frontend Developer",
+    "title": "Rahima Salman — Front-end Engineer",
     "description": "Frontend developer with ~5 years building JavaScript & Vue.js applications, specialized in advertising platforms. Open to frontend/senior roles — Baku & remote."
   },
   "hero": {
-    "role": "Frontend Developer — JavaScript / Vue.js / TypeScript · ~5 years",
+    "role": "Front-end Engineer — JavaScript / Vue.js / TypeScript · ~5 years",
     "tagline": "I build advertising platforms end-to-end — from architecture to launch — with a focus on performance, reusable systems, and clean UX."
   },
   "experience": {

@@ -1,11 +1,11 @@
 {
   "nav": { "home": "Главная", "projects": "Проекты" },
   "seo": {
-    "title": "Rahima Salman — Frontend разработчик",
+    "title": "Rahima Salman — Frontend-инженер",
     "description": "Frontend-разработчик с ~5-летним опытом создания приложений на JavaScript и Vue.js, специализация — рекламные платформы. Открыта к frontend/senior позициям — Баку и удалённо."
   },
   "hero": {
-    "role": "Frontend разработчик — JavaScript / Vue.js / TypeScript · ~5 лет",
+    "role": "Frontend-инженер — JavaScript / Vue.js / TypeScript · ~5 лет",
     "tagline": "Создаю рекламные платформы от архитектуры до запуска — с фокусом на производительность, переиспользуемые системы и чистый UX."
   },
   "experience": {

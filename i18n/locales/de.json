@@ -1,11 +1,11 @@
 {
   "nav": { "home": "Start", "projects": "Projekte" },
   "seo": {
-    "title": "Rahima Salman — Frontend-Entwicklerin",
+    "title": "Rahima Salman — Frontend-Engineer",
     "description": "Frontend-Entwicklerin mit ~5 Jahren Erfahrung in JavaScript und Vue.js-Anwendungen, spezialisiert auf Werbeplattformen. Offen für Frontend-/Senior-Positionen — Baku und remote."
   },
   "hero": {
-    "role": "Frontend-Entwicklerin — JavaScript / Vue.js / TypeScript · ~5 Jahre",
+    "role": "Frontend-Engineer — JavaScript / Vue.js / TypeScript · ~5 Jahre",
     "tagline": "Ich baue Werbeplattformen end-to-end — von der Architektur bis zum Launch — mit Fokus auf Performance, wiederverwendbare Systeme und sauberes UX."
   },
   "experience": {
