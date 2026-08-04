@@ -18,6 +18,8 @@ export default defineNuxtConfig({
             // Bu inline skript səhifə BOYANMADAN əvvəl işləyir və flash-ı (ağ/qara sıçrayış) aradan qaldırır:
             // localStorage-dakı seçim → yoxdursa sistem seçimi (prefers-color-scheme).
             htmlAttrs: { 'data-theme': 'light' },   // SSR/prerender üçün default; skript client-də üstündən yazır
+            // Nuxt default loqosu əvəzinə öz monoqram: saytın tokenləri + temaya görə özü uyğunlaşır
+            link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
             script: [
                 {
                     innerHTML:
@@ -28,14 +30,17 @@ export default defineNuxtConfig({
         },
     },
     i18n: {
+        baseUrl: 'https://rahimasalman.netlify.app',   // hreflang/canonical MÜTLƏQ URL tələb edir
         defaultLocale: 'en',
         strategy: 'prefix_except_default',
+        // ⚠️ `language` (BCP47) MƏCBURİDİR — <html lang> və hreflang məhz ondan yaranır.
+        // O olmadan useLocaleHead yalnız `dir` verir, alternativ linklər ümumiyyətlə yaranmır.
         locales: [
-            { code: 'en', name: 'English',      file: 'en.json' },
-            { code: 'az', name: 'Azərbaycanca', file: 'az.json' },
-            { code: 'ru', name: 'Русский',      file: 'ru.json' },
-            { code: 'es', name: 'Español',      file: 'es.json' },
-            { code: 'de', name: 'Deutsch',      file: 'de.json' },
+            { code: 'en', name: 'English',      file: 'en.json', language: 'en' },
+            { code: 'az', name: 'Azərbaycanca', file: 'az.json', language: 'az' },
+            { code: 'ru', name: 'Русский',      file: 'ru.json', language: 'ru' },
+            { code: 'es', name: 'Español',      file: 'es.json', language: 'es' },
+            { code: 'de', name: 'Deutsch',      file: 'de.json', language: 'de' },
         ],
     },
     css: ['~/assets/css/main.css'],

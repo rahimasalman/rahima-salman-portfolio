@@ -66,18 +66,33 @@ useSeoMeta({
   ogType: 'website',
 })
 
-onMounted(() => {
-  const els = document.querySelectorAll('.reveal')
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        io.unobserve(e.target)
-      }
-    })
-  }, {threshold: 0.15})
-  els.forEach(el => io.observe(el))
+/* GEO/SEO — Person schema (JSON-LD).
+   Niyə: h1 = ad qərarının (07-29) texniki tamamlayıcısıdır. Google və LLM-lər üçün
+   "Rahima Salman" sadəcə mətn yox, ŞƏXS ENTİTY-si olur; sameAs GitHub/LinkedIn profillərini
+   eyni şəxsə bağlayır. Yalnız səhifədə onsuz da görünən məlumatlar yazılıb. */
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Rahima Salman',
+      url: 'https://rahimasalman.netlify.app',
+      jobTitle: 'Front-end Engineer',
+      email: 'mailto:rahimasalman7@gmail.com',
+      sameAs: [
+        'https://github.com/rahimasalman',
+        'https://www.linkedin.com/in/rahima-salman/',
+      ],
+      knowsAbout: ['JavaScript', 'TypeScript', 'Vue.js', 'Nuxt', 'Frontend Architecture', 'Advertising Technology'],
+      address: { '@type': 'PostalAddress', addressLocality: 'Baku', addressCountry: 'AZ' },
+    }),
+  }],
 })
+
+/* reveal artıq sırf CSS-dir (aşağıda `.reveal`) — IntersectionObserver silindi.
+   Səbəb: bazada `opacity: 0` + JS ilə açmaq = SSR anti-pattern (hero-da da eyni səhv idi):
+   serverdən gələn HTML görünməz olur və hydration bitənə qədər elə qalır. */
 </script>
 
 <style scoped>
@@ -114,10 +129,20 @@ onMounted(() => {
   letter-spacing: -0.025em;                    /* böyük şriftdə hərflər sıxılır */
 }
 
-.hero__name span { display: block; }           /* addım 3: iki sətir = sıx blok */
+/* adın İKİ SƏTRİ ayrı-ayrı gecikir (plan belə nəzərdə tuturdu).
+   h1-in öz animasiyası söndürülür, pilləkən span-lara keçir. */
+.hero__name { animation: none; }
+
+.hero__name span {
+  display: block;                              /* addım 3: iki sətir = sıx blok */
+  animation: rise .6s ease-out backwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+.hero__name span:nth-child(1) { --i: 1; }
+.hero__name span:nth-child(2) { --i: 2; }
 
 .hero__tagline {
-  --i: 2;
+  --i: 3;
   --flow: clamp(2rem, 5vh, 4rem);              /* GENİŞ — fikir dəyişir, nəfəs lazımdır */
   font-weight: 300;                            /* 800 vs 300 = çəki kontrastı */
   font-size: clamp(1.05rem, 1rem + .35vw, 1.35rem);
@@ -127,7 +152,7 @@ onMounted(() => {
 }
 
 .hero__links {
-  --i: 3;
+  --i: 4;
   display: flex;                               /* addım 4: məsafəni HTML boşluğu yox, gap idarə edir */
   gap: 1.5rem;
   flex-wrap: wrap;
@@ -270,16 +295,19 @@ main > section:not(.hero) > h2 + p {
   border-color: var(--accent);
 }
 
-/* 6) REVEAL — dəyişmədi */
+/* 6) REVEAL — sırf CSS, JS YOXDUR (hero-dakı Qat ③ ilə eyni məntiq)
+   🔑 Bazada `opacity: 0` YOXDUR — görünməzlik yalnız @keyframes-in `from`-undadır.
+   Nəticə: JS sınsa, gec gəlsə və ya reduced-motion animasiyanı söndürsə,
+   element öz TƏBİİ GÖRÜNƏN halında qalır. Tələ yamaqlanmır — quruluşla mövcud olmur. */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
+  animation: rise-in .6s ease-out backwards;
+  animation-timeline: view();              /* scroll-driven: element ekrana girdikcə */
+  animation-range: entry 0% entry 100%;
 }
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(24px); }
+  /* `to` qəsdən YOXDUR — brauzer elementin öz halını götürür */
 }
 
 /* ==========================================================

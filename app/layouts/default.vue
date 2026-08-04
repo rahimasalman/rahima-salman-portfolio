@@ -5,7 +5,7 @@
       <div class="nav__right">
         <div class="nav__links">
           <NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink>
-          <NuxtLink :to="localePath('/activity')">{{ $t('nav.projects') }}</NuxtLink>
+          <NuxtLink :to="localePath('/projects')">{{ $t('nav.projects') }}</NuxtLink>
         </div>
 
         <button
