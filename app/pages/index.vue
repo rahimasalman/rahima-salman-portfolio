@@ -107,11 +107,11 @@ onMounted(() => {
 
 .hero__name {
   --i: 1;
-  --flow: .75rem;                              /* kicker-ə SIX — bir blok kimi oxunurlar */
+  --flow: .75rem;
   font-size: clamp(3rem, 1rem + 9vw, 8rem);
-  font-weight: 800;                            /* qlobal h1-in 600-ünü üstələyir */
+  font-weight: 600;                            /* qloballa eyni — açıq yazılıb ki, hero bir blokda oxunsun */
   line-height: 0.88;                           /* böyük şriftdə sətirlər sıxılır */
-  letter-spacing: -0.035em;                    /* böyük şriftdə hərflər sıxılır */
+  letter-spacing: -0.025em;                    /* böyük şriftdə hərflər sıxılır */
 }
 
 .hero__name span { display: block; }           /* addım 3: iki sətir = sıx blok */
@@ -162,7 +162,6 @@ onMounted(() => {
   .hero__links   { grid-column: 1/8; }
 }
 
-:root[data-theme="light"] .hero__name { font-weight: 700; }
 /** :root[data-theme="light"] .hero__name { color: color-mix(in oklab, var(--ink) 88%, var(--bg)); } */
 
 /* ==========================================================

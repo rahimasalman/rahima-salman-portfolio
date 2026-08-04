@@ -101,5 +101,5 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
   font-size: .82rem; text-decoration: none; color: var(--ink); transition: background .15s;
 }
 .lang__menu a:hover { background: var(--hover); }
-.lang__menu a.is-active { color: var(--accent); font-weight: 600; }
+.lang__menu a.is-active { color: var(--accent); font-weight: 500; }  /* 600 ayrıca fayl tələb edirdi — 500 onsuz da yüklüdür */
 </style>

@@ -3,6 +3,15 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
     modules: ['@nuxtjs/sitemap', '@nuxt/fonts', '@nuxtjs/i18n'],
+    fonts: {
+        families: [
+            // Yalnız FAKTİKİ istifadə olunan kəsimlər — hər çəki ayrı fayldır.
+            // Fraunces:      400 = .nav__brand · 600 = h1/h2/h3 + .hero__name
+            // Space Grotesk: 300 = hero tagline · 400 = body · 500 = bölmə h2 + aktiv dil
+            { name: 'Fraunces', weights: [400, 600] },
+            { name: 'Space Grotesk', weights: [300, 400, 500] },
+        ],
+    },
     app: {
         head: {
             // SSG-də HTML build-də statikdir → server istifadəçinin temasını bilmir.
