@@ -1,16 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Saytın öz tokenləri: kağız fon + terracotta aksent. Temaya görə özü uyğunlaşır. -->
+  <!-- «R.» imzası — ad + nöqtə. Saytın öz tokenləri, konteyner yoxdur (app-ikonu görünüşündən qaçmaq üçün).
+
+       ⚠️ Hərf PATH-dır, <text> DEYİL: heç bir sistem şriftindən asılı deyil.
+          Əvvəlki versiya `font-family="Georgia, 'Times New Roman', serif"` ilə çəkilirdi →
+          Georgia olmayan maşında favicon HƏQİQƏTƏN Times New Roman olurdu (07-30-dakı bug-ın son qalığı).
+
+       🎓 Niyə hero-nun tipografiyası burada təkrarlanmır: Fraunces-in yüksək kontrastı 16px-də sağ qalmır
+          (nazik ştrixlər ~0.9px = yox olur). Bu, saytın ƏN KİÇİK OPTİK KƏSİMİdir — qalın gövdə (11 vahid),
+          qalınlaşdırılmış nazik yerlər (6 vahid). Fraunces-in `opsz` oxu məhz bunun üçün mövcuddur.
+
+       🎨 Terracotta YALNIZ nöqtədədir — saytın "bir cəsarətli aksent" qaydası.
+          Hərf ink-dir, çünki tab zolağına qarşı kontrastı ~13.7:1-dir (terracotta olsaydı ~3.6:1 → 16px-də əriyərdi).
+
+       ⚠️ prefers-color-scheme ƏMƏLİYYAT SİSTEMİNİN temasını oxuyur — saytdakı əl ilə tema keçidini GÖRMÜR.
+          Favicon ayrı sənəddir, səhifənin `data-theme` atributuna çıxışı yoxdur. Düzəlişi yoxdur, bilinməlidir. -->
   <style>
-    .bg   { fill: #f4f1ea; }
-    .mark { fill: #c2502e; }
+    .ink { fill: #1a1714; }   /* --ink    */
+    .dot { fill: #c2502e; }   /* --accent */
     @media (prefers-color-scheme: dark) {
-      .bg   { fill: #16181d; }
-      .mark { fill: #e0673f; }
+      .ink { fill: #e7e9ee; }
+      .dot { fill: #e0673f; }
     }
   </style>
-  <rect class="bg" width="64" height="64" rx="14"/>
-  <text class="mark" x="32" y="46"
-        text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="44" font-weight="600">R</text>
+
+  <!-- Optik mərkəzləmə: nöqtə nişanı sağa uzadır, ona görə hər iki element 2.5 vahid sola sürüşdürülüb.
+       Nəticə: sol boşluq 7.34, sağ boşluq 7.30 — qutuda simmetrik. -->
+  <g class="ink" transform="translate(24.5,32) scale(0.78) translate(-32,-32)">
+    <path d="M11 10H26V50H31V54H10V50H15V14H11Z"/>
+    <path d="M26 10C39 10 47 14.5 47 21.5C47 28.5 39 33 26 33L26 27C33.5 27 38 25 38 21.5C38 18 33.5 16 26 16Z"/>
+    <path d="M24 33H38L54 54H42Z"/>
+  </g>
+
+  <circle class="dot" cx="50.5" cy="43.5" r="6.2"/>
 </svg>

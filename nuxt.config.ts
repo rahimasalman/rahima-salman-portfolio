@@ -48,6 +48,25 @@ export default defineNuxtConfig({
         url: 'https://rahimasalman.netlify.app',
         name: 'Rahima Salman — Portfolio',
     },
+    nitro: {
+        prerender: {
+            // ⚠️ routeRules-dakı `prerender: true` marşrut YARATMIR — yalnız "bu yol statik ola bilər" deyir.
+            // Glob (`/projects/**`) və dil prefiksləri (`/az`, `/ru`, …) heç yerdə siyahılanmadığı üçün
+            // Nitro onların mövcudluğunu bilmirdi → build cəmi 2 HTML çıxarırdı (`/` və `/projects`).
+            // Crawler `/`-dan başlayıb linkləri gəzir: dil menyusu → 5 dil, projects → 4 slug (× 5 dil).
+            crawlLinks: true,
+            ignore: [
+                // `/activity` GitHub API-dən asılıdır → statikləşməməlidir, ISR qalır.
+                // Regex lazımdır, çünki crawler dil variantlarını da tapır: /az/activity, /ru/activity …
+                /\/activity$/,
+                // ⚠️ Crawler `/sitemap.xml`-i də gəzdi və onu `sitemap.xml/index.html` kimi yazdı.
+                // Netlify statik faylı server marşrutundan ƏVVƏL verir → Google sitemap əvəzinə
+                // meta-refresh HTML-i alardı (sitemap üçün meta-refresh izlənmir) = sitemap sınardı.
+                // Sitemap @nuxtjs/sitemap tərəfindən dinamik verilir, prerender olunmamalıdır.
+                /\.xml$/,
+            ],
+        },
+    },
     routeRules: {
         '/': {prerender: true},      // SSG (while build, static)
         // '/activity': {ssr: true},    // SSR (new on each request)
