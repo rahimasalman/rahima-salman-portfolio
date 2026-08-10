@@ -25,6 +25,15 @@
       </article>
     </section>
 
+    <!-- APPROACH -->
+    <section class="reveal approach">
+      <h2>{{ $t('approach.title') }}</h2>
+      <div v-for="key in approach" :key="key" class="approach__item">
+        <p class="approach__lead">{{ $t('approach.items.' + key + '.lead') }}</p>
+        <p class="approach__body">{{ $t('approach.items.' + key + '.body') }}</p>
+      </div>
+    </section>
+
     <!-- STACK -->
     <section class="reveal">
       <h2>{{ $t('stack.title') }}</h2>
@@ -79,6 +88,11 @@ const {t} = useI18n()
 const localePath = useLocalePath()
 
 const featured = projects.slice(0, 3)
+
+/* APPROACH — yalnız AÇARLAR burada, mətn i18n-də.
+   Səbəb: bu mətn Rahima-nın mövqeyidir və dəyişəcək (v1 qaralamadır) →
+   düzəliş komponentə yox, `approach.items.*`-a gedir. Sıra bu massivlə idarə olunur. */
+const approach = ['boundary', 'core', 'verify']
 
 /* STACK — sətirlərin MƏZMUNU i18n-də deyil, burada.
    Səbəb: elementlərin hamısı xüsusi ad / tərcümə olunmayan texniki termindir
@@ -327,26 +341,54 @@ main > section:not(.hero) > h2 + p {
   border-color: var(--accent);
 }
 
+/* 4b) APPROACH — bölmənin FORMASI qəsdən fərqlidir.
+   Experience/Projects/Stack hamısı XƏTT-lə işləyir (hairline + sıra). Bura xətt QOYULMADI:
+   ritmi qıran şey elə xəttin YOXLUĞU-dur. Yəni fərq dekorasiya ilə deyil,
+   səhifənin öz qrammatikasının bir elementini geri çəkməklə yaradılır.
+   Lead sətri display şriftdədir (səs), body isə `--ink` qalır — `--muted` qəsdən istifadə edilmədi
+   (07-30 dərsi: təsvirlərdə boz mətn kütləsi yaradırdı). */
+.approach__item { --flow: clamp(2rem, 5vh, 3rem); }
+
+.approach__lead {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.15rem, 1.05rem + .5vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  max-width: 28ch;                  /* dar = bəyanat forması */
+  text-wrap: balance;
+}
+
+.approach__body {
+  margin: .6rem 0 0;
+  font-size: 1rem;
+  max-width: 60ch;
+}
+
 /* 5b) STACK — `.exp-card` ilə EYNİ qrammatika: fon/radius/kölgə yox, yalnız xətt.
    <dl> seçildi çünki bu, semantik olaraq "ad → dəyər" cütlüyüdür (etiket → texnologiyalar);
    div sarğısı `dt`+`dd`-ni bir sətir kimi qruplaşdırmaq üçündür (HTML-də icazəlidir). */
 .stack {
   --flow: clamp(2rem, 5vh, 3rem);   /* h2-dən sonrakı nəfəs — .exp-card ilə eyni dəyər */
+
+  /* ⭐ RİTM QƏRARI: Stack üçüncü "etiket + xətli sətirlər" bloku olmamalıdır.
+     Experience və Projects ağırdır; bu blok onların ARASINDA NƏFƏS rolunu oynayır.
+     Ona görə hər sətrin öz xətti YOX — bütün bloka BİR nazik xətt (giriş siqnalı),
+     sətirlər isə sıx yığılır. Yəni fərq RƏNGLƏ deyil, SIXLIQLA yaradılır
+     (07-30 dərsi: `--muted` geri alınmışdı — boz mətn kütləsi yaradırdı). */
+  padding-block-start: clamp(.9rem, 2.5vw, 1.3rem);
+  border-block-start: 1px solid var(--border);
 }
 
 .stack__group {
   display: grid;
-  gap: .35rem;
-  padding-block: clamp(1.1rem, 3vw, 1.6rem);
-  border-block-start: 1px solid var(--border);
+  gap: .15rem;
+  padding-block: .45rem;            /* sıx — siyahı deyil, yığcam məlumat zolağı */
 }
-
-/* siyahının sonu bağlanır — açıq qalan xətt "yarımçıq kəsilmiş" oxunur (.exp-card-dakı eyni qərar) */
-.stack__group:last-child { border-block-end: 1px solid var(--border); }
 
 /* qrup adı = ETİKET, h2-nin eyni forması → səhifə boyu təkrarlanan qrammatika */
 .stack dt {
-  font-size: clamp(.7rem, .68rem + .1vw, .78rem);
+  font-size: clamp(.66rem, .64rem + .1vw, .72rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .14em;
@@ -355,7 +397,8 @@ main > section:not(.hero) > h2 + p {
 
 .stack dd {
   margin: 0;                        /* brauzer `dd`-yə 40px soldan girinti verir */
-  font-size: 1rem;
+  font-size: .95rem;                /* .exp-card-dan kiçik — iyerarxiyada bir pillə aşağı */
+  line-height: 1.5;
   max-width: 52ch;
 }
 
@@ -445,11 +488,13 @@ main > section:not(.hero) > h2 + p {
   /* alt başlıq etiketlə yan-yana durur → onu aşağı itələyən boşluq lazım deyil */
   main > section:not(.hero) > h2 + p { --flow: 0; }
 
-  /* stack sətri: etiket | dəyər — bölmə səviyyəsindəki eyni "asılı etiket" məntiqi, kiçik miqyasda */
+  /* stack sətri: etiket | dəyər — bölmə səviyyəsindəki eyni "asılı etiket" məntiqi, kiçik miqyasda.
+     Sıx qalır: sətirlər arası boşluq YOX, sütun ayrılığı informasiyanı onsuz da oxunaqlı edir. */
   .stack__group {
-    grid-template-columns: 9rem 1fr;
+    grid-template-columns: 8rem 1fr;
     column-gap: 1.5rem;
     align-items: baseline;
+    padding-block: .3rem;
   }
 
   /* desktop-da etiket yan sütundadır → bəyanatı aşağı itələyən boşluq lazım deyil */

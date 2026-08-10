@@ -20,6 +20,23 @@
       "desc": "Konzeption und Leitung einer kanalübergreifenden Werbeplattform vom Konzept bis zur Produktion in einem Startup, das auf 10 Mio. USD ARR wuchs — Beitrag zu ~45% Umsatzsteigerung und 15% schnelleren Ladezeiten."
     }
   },
+  "approach": {
+    "title": "Wie ich arbeite",
+    "items": {
+      "boundary": {
+        "lead": "Ich entscheide vor dem Schreiben, wohin die Arbeit gehört.",
+        "body": "Bevor ich ein Feature baue, frage ich, ob der Server es übernehmen sollte. Daten, die fertig ankommen, brauchen im Browser keine Konvertierung und keine Neuberechnung."
+      },
+      "core": {
+        "lead": "Der Kernpfad kommt zuerst — und bleibt einfach.",
+        "body": "Die Hauptfunktionalität kommt zuerst und wird einfach gehalten. Alles danach lässt sich schnell anpassen — genau das bringt Einfachheit."
+      },
+      "verify": {
+        "lead": "Ich ändere nichts, was ich nicht überprüfen kann.",
+        "body": "Unter Zeitdruck lasse ich eng gekoppelten Code lieber in Ruhe, statt ihn einer KI zum „Optimieren“ zu geben — das braucht echte Tests. Logikänderungen stimme ich vorher mit dem Manager ab."
+      }
+    }
+  },
   "stack": {
     "title": "Stack",
     "core": "Kern",

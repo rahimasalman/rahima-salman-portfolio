@@ -20,6 +20,23 @@
       "desc": "Architected and led a cross-channel advertising platform from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times."
     }
   },
+  "approach": {
+    "title": "How I work",
+    "items": {
+      "boundary": {
+        "lead": "I decide where the work belongs before writing it.",
+        "body": "Before building a feature I ask whether the server should own it. Data that arrives ready needs no conversion or recalculation in the browser."
+      },
+      "core": {
+        "lead": "The core path ships first, and stays simple.",
+        "body": "Main functionality goes in first and is kept simple. Everything after that is quick to adjust — that is what simple buys you."
+      },
+      "verify": {
+        "lead": "I don't change what I can't verify.",
+        "body": "Under pressure I leave tightly coupled code alone rather than hand it to an AI to \"optimize\" — that needs proper testing. Logic changes are agreed with the manager first."
+      }
+    }
+  },
   "stack": {
     "title": "Stack",
     "core": "Core",

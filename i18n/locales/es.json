@@ -20,6 +20,23 @@
       "desc": "Diseñé y lideré una plataforma publicitaria multicanal desde el concepto hasta producción en una startup que creció hasta $10M ARR — contribuyendo a un aumento de ingresos de ~45% y un 15% más de velocidad de carga."
     }
   },
+  "approach": {
+    "title": "Cómo trabajo",
+    "items": {
+      "boundary": {
+        "lead": "Decido dónde va el trabajo antes de escribirlo.",
+        "body": "Antes de construir una funcionalidad pregunto si el servidor debería encargarse. Los datos que llegan listos no necesitan conversiones ni recálculos en el navegador."
+      },
+      "core": {
+        "lead": "Primero el camino principal — y se mantiene simple.",
+        "body": "La funcionalidad principal entra primero y se mantiene simple. Todo lo demás se ajusta rápido: eso es lo que da la simplicidad."
+      },
+      "verify": {
+        "lead": "No cambio lo que no puedo verificar.",
+        "body": "Con poco tiempo prefiero no refactorizar código muy acoplado ni pasárselo a una IA para «optimizar»: eso requiere pruebas reales. Los cambios de lógica los acuerdo antes con el manager."
+      }
+    }
+  },
   "stack": {
     "title": "Stack",
     "core": "Núcleo",

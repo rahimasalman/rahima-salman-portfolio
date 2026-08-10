@@ -20,6 +20,23 @@
       "desc": "Cross-channel reklam platformasını sıfırdan prod-a apardım — $10M ARR-a çatan startapda ~45% gəlir artımı və 15% daha sürətli yüklənmə."
     }
   },
+  "approach": {
+    "title": "Necə işləyirəm",
+    "items": {
+      "boundary": {
+        "lead": "İşin yerini kod yazmamışdan əvvəl seçirəm.",
+        "body": "Yeni feature qurmazdan əvvəl soruşuram: bunu backend daha sürətli edə bilərmi? Hazır gələn data brauzerdə çevrilməyə və yenidən hesablanmağa ehtiyac qoymur."
+      },
+      "core": {
+        "lead": "Əvvəl əsas funksionallıq — və sadə qalır.",
+        "body": "Əsas iş birinci gedir və sadə saxlanılır. Ondan sonrakı hər şey tez düzəlir — sadəliyin qazandırdığı elə budur."
+      },
+      "verify": {
+        "lead": "Yoxlaya bilmədiyimi dəyişmirəm.",
+        "body": "İş çox olanda bir-birinə sıx bağlı hissələri refactor etmirəm, «optimizasiya et» deyə AI-a da atmıram — bunlar detallı test tələb edir. Məntiq dəyişikliklərini əvvəlcə menecerlə razılaşdırıram."
+      }
+    }
+  },
   "stack": {
     "title": "Stack",
     "core": "Əsas",
