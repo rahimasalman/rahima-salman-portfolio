@@ -20,6 +20,16 @@
       "desc": "Architected and led a cross-channel advertising platform from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times."
     }
   },
+  "stack": {
+    "title": "Stack",
+    "core": "Core",
+    "interface": "Interface",
+    "engineering": "Engineering"
+  },
+  "contact": {
+    "title": "Contact",
+    "headline": "Open to front-end and senior roles — Baku or remote."
+  },
   "activity": {
     "title": "My latest GitHub projects",
     "loading": "Loading...",

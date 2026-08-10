@@ -20,6 +20,16 @@
       "desc": "Cross-channel reklam platformasını sıfırdan prod-a apardım — $10M ARR-a çatan startapda ~45% gəlir artımı və 15% daha sürətli yüklənmə."
     }
   },
+  "stack": {
+    "title": "Stack",
+    "core": "Əsas",
+    "interface": "İnterfeys",
+    "engineering": "Mühəndislik"
+  },
+  "contact": {
+    "title": "Əlaqə",
+    "headline": "Frontend və senior vakansiyalara açığam — Bakı və ya remote."
+  },
   "activity": {
     "title": "Son GitHub layihələrim",
     "loading": "Yüklənir...",

@@ -25,6 +25,17 @@
       </article>
     </section>
 
+    <!-- STACK -->
+    <section class="reveal">
+      <h2>{{ $t('stack.title') }}</h2>
+      <dl class="stack">
+        <div v-for="group in stack" :key="group.key" class="stack__group">
+          <dt>{{ $t('stack.' + group.key) }}</dt>
+          <dd>{{ group.items.join(' · ') }}</dd>
+        </div>
+      </dl>
+    </section>
+
     <!-- PROJECTS -->
     <section class="reveal">
       <h2>{{ $t('projects.title') }}</h2>
@@ -46,6 +57,17 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
+    <section class="reveal contact">
+      <h2>{{ $t('contact.title') }}</h2>
+      <p class="contact__line">{{ $t('contact.headline') }}</p>
+      <a class="contact__mail" href="mailto:rahimasalman7@gmail.com">rahimasalman7@gmail.com</a>
+      <div class="contact__links">
+        <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
+      </div>
+    </section>
+
   </main>
 </template>
 
@@ -57,6 +79,16 @@ const {t} = useI18n()
 const localePath = useLocalePath()
 
 const featured = projects.slice(0, 3)
+
+/* STACK — sətirlərin MƏZMUNU i18n-də deyil, burada.
+   Səbəb: elementlərin hamısı xüsusi ad / tərcümə olunmayan texniki termindir
+   (Vue.js, SSR/SSG, REST) → 5 dilə kopyalamaq eyni mətnin 5 nüsxəsini yaradardı.
+   Tərcümə olunan yalnız QRUP ADLARI-dır (`stack.core` və s.). */
+const stack = [
+  { key: 'core',        items: ['Vue.js', 'Nuxt', 'TypeScript', 'JavaScript', 'Composition API', 'Pinia / Vuex'] },
+  { key: 'interface',   items: ['SCSS', 'Tailwind CSS', 'Design Systems', 'Web Accessibility'] },
+  { key: 'engineering', items: ['SSR / SSG', 'Web Performance', 'REST', 'Git', 'Code Review'] },
+]
 
 useSeoMeta({
   title: () => t('seo.title'),
@@ -295,6 +327,82 @@ main > section:not(.hero) > h2 + p {
   border-color: var(--accent);
 }
 
+/* 5b) STACK — `.exp-card` ilə EYNİ qrammatika: fon/radius/kölgə yox, yalnız xətt.
+   <dl> seçildi çünki bu, semantik olaraq "ad → dəyər" cütlüyüdür (etiket → texnologiyalar);
+   div sarğısı `dt`+`dd`-ni bir sətir kimi qruplaşdırmaq üçündür (HTML-də icazəlidir). */
+.stack {
+  --flow: clamp(2rem, 5vh, 3rem);   /* h2-dən sonrakı nəfəs — .exp-card ilə eyni dəyər */
+}
+
+.stack__group {
+  display: grid;
+  gap: .35rem;
+  padding-block: clamp(1.1rem, 3vw, 1.6rem);
+  border-block-start: 1px solid var(--border);
+}
+
+/* siyahının sonu bağlanır — açıq qalan xətt "yarımçıq kəsilmiş" oxunur (.exp-card-dakı eyni qərar) */
+.stack__group:last-child { border-block-end: 1px solid var(--border); }
+
+/* qrup adı = ETİKET, h2-nin eyni forması → səhifə boyu təkrarlanan qrammatika */
+.stack dt {
+  font-size: clamp(.7rem, .68rem + .1vw, .78rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+}
+
+.stack dd {
+  margin: 0;                        /* brauzer `dd`-yə 40px soldan girinti verir */
+  font-size: 1rem;
+  max-width: 52ch;
+}
+
+/* 5c) CONTACT — səhifənin bağlanışı. Hero "kim" deyir, bura "indi nə?" deyir. */
+/* ⚠️ İki sinifli seçici MƏCBURİDİR: `main > section:not(.hero) > h2 + p` qaydası bu elementi də tutur
+   (o, `--flow: .5rem` + `color: var(--muted)` + `max-width: 48ch` verir). Spesifiklikdə əvvəl SİNİF sayı
+   müqayisə olunur → (0,2,0) > (0,1,4), yəni bir sinif əlavə etmək 4 elementdən güclüdür. */
+.contact .contact__line {
+  --flow: clamp(2rem, 5vh, 3rem);
+  color: var(--ink);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.3rem);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  max-width: 20ch;                  /* dar sütun = bəyanat forması, paraqraf yox */
+  text-wrap: balance;
+}
+
+.contact__mail {
+  --flow: 1.75rem;
+  display: block;                   /* inline element margin-block qəbul etmir */
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(1rem, .95rem + .3vw, 1.15rem);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+  transition: color .2s;
+}
+
+.contact__mail:hover { color: var(--accent); }
+
+.contact__links {
+  --flow: 1.25rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: .9rem;
+}
+
+.contact__links a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+  transition: color .2s;
+}
+
+.contact__links a:hover { color: var(--accent); }
+
 /* 6) REVEAL — sırf CSS, JS YOXDUR (hero-dakı Qat ③ ilə eyni məntiq)
    🔑 Bazada `opacity: 0` YOXDUR — görünməzlik yalnız @keyframes-in `from`-undadır.
    Nəticə: JS sınsa, gec gəlsə və ya reduced-motion animasiyanı söndürsə,
@@ -336,5 +444,15 @@ main > section:not(.hero) > h2 + p {
 
   /* alt başlıq etiketlə yan-yana durur → onu aşağı itələyən boşluq lazım deyil */
   main > section:not(.hero) > h2 + p { --flow: 0; }
+
+  /* stack sətri: etiket | dəyər — bölmə səviyyəsindəki eyni "asılı etiket" məntiqi, kiçik miqyasda */
+  .stack__group {
+    grid-template-columns: 9rem 1fr;
+    column-gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  /* desktop-da etiket yan sütundadır → bəyanatı aşağı itələyən boşluq lazım deyil */
+  .contact .contact__line { --flow: 0; }
 }
 </style>
