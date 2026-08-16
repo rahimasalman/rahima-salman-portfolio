@@ -8,20 +8,18 @@
       <div class="hero__links">
         <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
-        <a href="mailto:rahimasalman7@gmail.com">Email</a>
+        <a href="mailto:hello.rahimasalman@gmail.com">Email</a>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section class="reveal">
       <h2>{{ $t('experience.title') }}</h2>
-      <article class="exp-card">
-        <h3>{{ $t('experience.newmedia.title') }}</h3>
-        <p>{{ $t('experience.newmedia.desc') }}</p>
-      </article>
-      <article class="exp-card">
-        <h3>{{ $t('experience.adviad.title') }}</h3>
-        <p>{{ $t('experience.adviad.desc') }}</p>
+      <article v-for="job in experience" :key="job.key" class="exp-card">
+        <p class="exp-card__period">{{ job.period }}</p>
+        <h3>{{ $t('experience.' + job.key + '.title') }}</h3>
+        <p>{{ $t('experience.' + job.key + '.desc') }}</p>
+        <p v-if="job.tech.length" class="exp-card__tech">{{ job.tech.join(' · ') }}</p>
       </article>
     </section>
 
@@ -46,20 +44,13 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="reveal">
+    <!-- id="projects" → nav-dakı "Projects" artıq ayrıca səhifəyə yox, BU bölməyə enir.
+         Səbəb: cəmi 4 layihə var, siyahı səhifəsi ziyarətçini bir klik uzaqlaşdırırdı. -->
+    <section id="projects" class="reveal">
       <h2>{{ $t('projects.title') }}</h2>
       <p>{{ $t('projects.subtitle') }}</p>
-      <article class="exp-card" v-for="project in featured" :key="project.slug">
-        <div>
-          <h3>{{ project.title }}</h3>
-          <p>{{ $t('projects.items.' + project.slug + '.description') }}</p>
-          <NuxtLink :to="localePath('/projects/' + project.slug)">{{ $t('projects.viewProject') }}</NuxtLink>
-        </div>
-      </article>
+      <ProjectCard v-for="project in projects" :key="project.slug" :project="project"/>
       <div class="projects__more">
-        <NuxtLink :to="localePath('/projects')" class="view-all">
-          {{ $t('projects.viewAll') }}
-        </NuxtLink>
         <NuxtLink :to="localePath('/activity')" class="view-live">
           {{ $t('experience.activityLink') }}
         </NuxtLink>
@@ -69,12 +60,11 @@
     <!-- CONTACT -->
     <section class="reveal contact">
       <h2>{{ $t('contact.title') }}</h2>
+      <!-- ⚠️ Əlaqə linkləri buradan GÖTÜRÜLDÜ → footer-ə köçdü (hər səhifədə görünür).
+           Səbəb: footer dərhal aşağıdadır; eyni üç ikonu 100px aralıqla iki dəfə vermək
+           çağırışı gücləndirmir. Bölmə indi yalnız BƏYANATDIR, hərəkət isə footer-dədir —
+           ikisi birlikdə səhifənin bağlanışını təşkil edir. -->
       <p class="contact__line">{{ $t('contact.headline') }}</p>
-      <a class="contact__mail" href="mailto:rahimasalman7@gmail.com">rahimasalman7@gmail.com</a>
-      <div class="contact__links">
-        <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
-      </div>
     </section>
 
   </main>
@@ -82,12 +72,14 @@
 
 <script setup lang="ts">
 import {projects} from '~/data/projects'
+import {experience} from '~/data/experience'
 
 const {t} = useI18n()
 
 const localePath = useLocalePath()
 
-const featured = projects.slice(0, 3)
+/* Layihələr TAM siyahı ilə göstərilir (`slice`/`featured` yoxdur) — cəmi 4 ədəddir,
+   "ilk 3 + hamısına bax" nisbəti bu sayda ziyarətçini boş yerə bir klik uzağa göndərirdi. */
 
 /* APPROACH — yalnız AÇARLAR burada, mətn i18n-də.
    Səbəb: bu mətn Rahima-nın mövqeyidir və dəyişəcək (v1 qaralamadır) →
@@ -99,7 +91,7 @@ const approach = ['boundary', 'core', 'verify']
    (Vue.js, SSR/SSG, REST) → 5 dilə kopyalamaq eyni mətnin 5 nüsxəsini yaradardı.
    Tərcümə olunan yalnız QRUP ADLARI-dır (`stack.core` və s.). */
 const stack = [
-  { key: 'core',        items: ['Vue.js', 'Nuxt', 'TypeScript', 'JavaScript', 'Composition API', 'Pinia / Vuex'] },
+  { key: 'core',        items: ['Vue.js', 'Nuxt', 'TypeScript', 'JavaScript', 'React', 'Composition API', 'Pinia / Vuex'] },
   { key: 'interface',   items: ['SCSS', 'Tailwind CSS', 'Design Systems', 'Web Accessibility'] },
   { key: 'engineering', items: ['SSR / SSG', 'Web Performance', 'REST', 'Git', 'Code Review'] },
 ]
@@ -125,12 +117,12 @@ useHead({
       name: 'Rahima Salman',
       url: 'https://rahimasalman.netlify.app',
       jobTitle: 'Front-end Engineer',
-      email: 'mailto:rahimasalman7@gmail.com',
+      email: 'mailto:hello.rahimasalman@gmail.com',
       sameAs: [
         'https://github.com/rahimasalman',
         'https://www.linkedin.com/in/rahima-salman/',
       ],
-      knowsAbout: ['JavaScript', 'TypeScript', 'Vue.js', 'Nuxt', 'Frontend Architecture', 'Advertising Technology'],
+      knowsAbout: ['JavaScript', 'TypeScript', 'Vue.js', 'Nuxt', 'React', 'Frontend Architecture', 'Advertising Technology'],
       address: { '@type': 'PostalAddress', addressLocality: 'Baku', addressCountry: 'AZ' },
     }),
   }],
@@ -236,97 +228,27 @@ useHead({
 /** :root[data-theme="light"] .hero__name { color: color-mix(in oklab, var(--ink) 88%, var(--bg)); } */
 
 /* ==========================================================
-   Qalan bölmələr — editorial dil (hero ilə eyni qrammatika)
+   ⚠️ EDITORIAL QRAMMATİKA ARTIQ BURADA DEYİL → `assets/css/main.css`.
+   Bölmə ritmi, etiket başlıq, `.exp-card` siyahısı, `.view-all`, `.reveal` və 12 sütunlu
+   qrid saytın HƏR səhifəsinə lazımdır (`/projects`, `/projects/[slug]`), scoped isə yalnız
+   bu komponentə çatırdı. Aşağıda YALNIZ ana səhifəyə xas qaydalar qalıb.
+   ⚠️ hover-tilt + box-shadow bloku hələ 07-30-da silinmişdi: kartsız/kölgəsiz dildə
+   qalxma və kölgə ziddiyyətdir (squint test-in tapdığı problem).
    ========================================================== */
 
-/* 1) BÖLMƏLƏR ARASI VAHİD RİTM
-   hero də <section>-dır → TƏK qayda hamısını tutur.
-   (əvvəlki ayrıca `.hero + section` qaydası buna görə silindi — iki həqiqət mənbəyi olmasın) */
-main > section + section {
-  margin-block-start: clamp(3rem, 12vh, 6rem);
-}
-
-/* 2) BÖLMƏ DAXİLİ RİTM — hero-dakı eyni "flow" pattern.
-   :not(.hero) → hero-nun öz qaydaları var, ora qarışmırıq. */
-main > section:not(.hero) > * { margin: 0; }
-main > section:not(.hero) > * + * { margin-block-start: var(--flow, 1.5rem); }
-
-/* 3) BÖLMƏ BAŞLIĞI = ETİKET, ulduz deyil.
-   Hero kicker-in eyni forması → səhifə boyu təkrarlanan qrammatika. */
-main > section:not(.hero) > h2 {
-  font-family: var(--font-body);
-  font-size: clamp(.7rem, .68rem + .1vw, .78rem);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
-}
-
-/* h2-dən DƏRHAL sonrakı p = alt başlıq → etiketə sıx yapışır */
-main > section:not(.hero) > h2 + p {
-  --flow: .5rem;
-  color: var(--muted);
-  max-width: 48ch;
-}
-
-/* 4) KARTLAR — "kart" deyil, EDITORIAL SİYAHI (fon/radius/kölgə yox, yalnız xətt) */
-.exp-card {
-  --flow: clamp(2rem, 5vh, 3rem);                   /* başlıqdan sonra ilk sətir */
-  padding-block: clamp(1.5rem, 4vw, 2.25rem);       /* ⚠️ `padding: 10px` silindi — clamp-i öldürürdü */
-  border-block-start: 1px solid var(--border);
-}
-
-/* sətirlər arası boşluğu margin yox, XƏTT + padding verir */
-.exp-card + .exp-card { --flow: 0; }
-
-/* sonuncu xətt: xəttsiz bitən siyahı "yarımçıq kəsilmiş" oxunur */
-.exp-card:last-of-type { border-block-end: 1px solid var(--border); }
-
-.exp-card h3,
-.exp-card p { margin: 0; }                          /* brauzer defaultu */
-
-.exp-card h3 {
-  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);    /* bölmənin ulduzu */
-  letter-spacing: -.02em;
-}
-
-.exp-card p {
-  margin-block-start: .6rem;
-  font-size: 1rem;
-  max-width: 62ch;
-}
-
-.exp-card a {
-  display: inline-block;                            /* inline element margin-block qəbul etmir */
-  margin-block-start: 1rem;
-  font-size: .9rem;
-  text-decoration-thickness: 1px;
-  text-underline-offset: .3em;
-  transition: color .2s;
-}
-
-.exp-card a:hover { color: var(--accent); }
-
-/* ⚠️ hover-tilt + box-shadow bloku TAM SİLİNDİ:
-   kartsız/kölgəsiz dildə qalxma və kölgə ziddiyyətdir (squint test-in tapdığı problem). */
+/* nav-dan `#projects` ilə gələndə bölmə ekranın lap yuxarısına yapışmasın */
+#projects { scroll-margin-block-start: 2rem; }
 
 /* 5) ALT LİNKLƏR — mərkəz YOX, səhifənin qalanı kimi sola bağlı */
+/* ⚠️ `--flow` azaldıldı: bu link Projects bölməsinin QUYRUĞUDUR, amma bölmələr arası
+   boşluq qədər ayrılanda ayrıca bölmə kimi oxunurdu (asılı sətir effekti). */
 .projects__more {
-  --flow: clamp(2rem, 5vh, 3rem);
+  --flow: clamp(1.25rem, 3vh, 1.75rem);
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: .75rem;
 }
-
-.view-all {
-  font-size: .9rem;
-  text-decoration-thickness: 1px;
-  text-underline-offset: .3em;
-  transition: color .2s;
-}
-
-.view-all:hover { color: var(--accent); }
 
 .view-live {
   font-size: .85rem;
@@ -406,88 +328,26 @@ main > section:not(.hero) > h2 + p {
 /* ⚠️ İki sinifli seçici MƏCBURİDİR: `main > section:not(.hero) > h2 + p` qaydası bu elementi də tutur
    (o, `--flow: .5rem` + `color: var(--muted)` + `max-width: 48ch` verir). Spesifiklikdə əvvəl SİNİF sayı
    müqayisə olunur → (0,2,0) > (0,1,4), yəni bir sinif əlavə etmək 4 elementdən güclüdür. */
+/* ⚠️ `max-width: 20ch` SİLİNDİ və ölçü kiçildildi: bəyanat BİR SƏTİRDƏ oxunmalıdır.
+   Dar sütun + böyük şrift onu üç sətrə bölürdü — "bəyanat forması" məhz sətrin
+   bütövlüyündədir, dar sütunda deyil.
+   ⚠️ Ölçü sərhədi hesablanıb: məzmun sütunu ~637px-dir (12 sütunun 8-i), cümlə ~52 hərfdir
+   → hərf başına ~12px, yəni display şriftdə maksimum ~1.45rem. Daha böyüyü sətri qırır.
+   Uzun tərcümələrdə (de/ru/es) iki sətrə düşə bilər — bu normaldır, qırılma yoxdur. */
 .contact .contact__line {
   --flow: clamp(2rem, 5vh, 3rem);
   color: var(--ink);
   font-family: var(--font-display), serif;
-  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.3rem);
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  max-width: 20ch;                  /* dar sütun = bəyanat forması, paraqraf yox */
+  font-size: clamp(1.05rem, .85rem + .95vw, 1.45rem);
+  line-height: 1.3;
+  letter-spacing: -.015em;
   text-wrap: balance;
 }
 
-.contact__mail {
-  --flow: 1.75rem;
-  display: block;                   /* inline element margin-block qəbul etmir */
-  width: max-content;
-  max-width: 100%;
-  font-size: clamp(1rem, .95rem + .3vw, 1.15rem);
-  text-decoration-thickness: 1px;
-  text-underline-offset: .3em;
-  transition: color .2s;
-}
-
-.contact__mail:hover { color: var(--accent); }
-
-.contact__links {
-  --flow: 1.25rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  font-size: .9rem;
-}
-
-.contact__links a {
-  text-decoration-thickness: 1px;
-  text-underline-offset: .3em;
-  transition: color .2s;
-}
-
-.contact__links a:hover { color: var(--accent); }
-
-/* 6) REVEAL — sırf CSS, JS YOXDUR (hero-dakı Qat ③ ilə eyni məntiq)
-   🔑 Bazada `opacity: 0` YOXDUR — görünməzlik yalnız @keyframes-in `from`-undadır.
-   Nəticə: JS sınsa, gec gəlsə və ya reduced-motion animasiyanı söndürsə,
-   element öz TƏBİİ GÖRÜNƏN halında qalır. Tələ yamaqlanmır — quruluşla mövcud olmur. */
-.reveal {
-  animation: rise-in .6s ease-out backwards;
-  animation-timeline: view();              /* scroll-driven: element ekrana girdikcə */
-  animation-range: entry 0% entry 100%;
-}
-
-@keyframes rise-in {
-  from { opacity: 0; transform: translateY(24px); }
-  /* `to` qəsdən YOXDUR — brauzer elementin öz halını götürür */
-}
-
 /* ==========================================================
-   Bölmələr — 768px+ : hero-nun 12 sütunlu qrideri aşağıda davam edir
+   Ana səhifə — 768px+ (12 sütunlu qridin ÖZÜ main.css-dədir)
    ========================================================== */
 @media (min-width: 768px) {
-  main > section:not(.hero) {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: clamp(1rem, 3vw, 2rem);
-  }
-
-  /* etiket öz sütununda "asılı" qalır — ölçü ilə yox, MÖVQE ilə görünür */
-  main > section:not(.hero) > h2 {
-    grid-column: 1 / 4;
-    grid-row: 1 / -1;        /* 1-ci sətirdən SONUNCUYA qədər — bütün bölmə boyu */
-    align-self: start;       /* uzanmasın, yuxarıda dursun */
-    position: sticky;
-    top: 2rem;
-  }
-
-  /* qalan hər şey sağ blokda; sağ kənar 12 = hero tagline-ın sağ kənarı */
-  main > section:not(.hero) > *:not(h2) {
-    grid-column: 4 / 12;
-  }
-
-  /* alt başlıq etiketlə yan-yana durur → onu aşağı itələyən boşluq lazım deyil */
-  main > section:not(.hero) > h2 + p { --flow: 0; }
-
   /* stack sətri: etiket | dəyər — bölmə səviyyəsindəki eyni "asılı etiket" məntiqi, kiçik miqyasda.
      Sıx qalır: sətirlər arası boşluq YOX, sütun ayrılığı informasiyanı onsuz da oxunaqlı edir. */
   .stack__group {

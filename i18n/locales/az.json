@@ -5,7 +5,7 @@
     "description": "JavaScript və Vue.js tətbiqləri quran ~5 illik frontend developer, reklam platformalarında ixtisaslaşıb. Frontend/senior vakansiyalara açıq — Bakı və remote."
   },
   "hero": {
-    "role": "Front-end Engineer — JavaScript / Vue.js / TypeScript · ~5 il",
+    "role": "Front-end Engineer — JavaScript / Vue.js / React / TypeScript · ~5 il",
     "tagline": "Reklam platformalarını sıfırdan prod-a çıxarıram — performans, təkrar-istifadə və təmiz UX fokusu ilə."
   },
   "experience": {
@@ -18,6 +18,14 @@
     "adviad": {
       "title": "Adviad — Frontend Developer",
       "desc": "Cross-channel reklam platformasını sıfırdan prod-a apardım — $10M ARR-a çatan startapda ~45% gəlir artımı və 15% daha sürətli yüklənmə."
+    },
+    "artifactlabs": {
+      "title": "TBD — Artifact Labs",
+      "desc": "TBD — placeholder: bir-iki cümlə (nə qurdun, nə dəyişdi). Uzunluq qəsdən real kartla eyni seçilib ki, bölmənin ritmi 4 kartda necə görünür — ölçülə bilsin."
+    },
+    "vabiss": {
+      "title": "TBD — VABISS",
+      "desc": "TBD — placeholder: bir-iki cümlə (nə qurdun, nə dəyişdi). Uzunluq qəsdən real kartla eyni seçilib ki, bölmənin ritmi 4 kartda necə görünür — ölçülə bilsin."
     }
   },
   "approach": {
@@ -25,7 +33,7 @@
     "items": {
       "boundary": {
         "lead": "İşin yerini kod yazmamışdan əvvəl seçirəm.",
-        "body": "Yeni feature qurmazdan əvvəl soruşuram: bunu backend daha sürətli edə bilərmi? Hazır gələn data brauzerdə çevrilməyə və yenidən hesablanmağa ehtiyac qoymur."
+        "body": "Yeni feature qurmazdan əvvəl soruşuram: bunu backend daha sürətli edə bilərmi? Hazır gələn data brauzerdə çevrilməyə və yenidən hesablanmağa ehtiyac qoymur. Bunun qiyməti var: dəyişiklik başqa komandanın təqviminə düşür — ona görə bu xətti yalnız brauzerin həmin hesabı hər render-də təkrarlayacağı halda keçirəm."
       },
       "core": {
         "lead": "Əvvəl əsas funksionallıq — və sadə qalır.",

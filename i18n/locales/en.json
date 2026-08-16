@@ -5,7 +5,7 @@
     "description": "Frontend developer with ~5 years building JavaScript & Vue.js applications, specialized in advertising platforms. Open to frontend/senior roles — Baku & remote."
   },
   "hero": {
-    "role": "Front-end Engineer — JavaScript / Vue.js / TypeScript · ~5 years",
+    "role": "Front-end Engineer — JavaScript / Vue.js / React / TypeScript · ~5 years",
     "tagline": "I build advertising platforms end-to-end — from architecture to launch — with a focus on performance, reusable systems, and clean UX."
   },
   "experience": {
@@ -18,6 +18,14 @@
     "adviad": {
       "title": "Adviad — Frontend Developer",
       "desc": "Architected and led a cross-channel advertising platform from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times."
+    },
+    "artifactlabs": {
+      "title": "TBD — Artifact Labs",
+      "desc": "TBD — placeholder: bir-iki cümlə (nə qurdun, nə dəyişdi). Uzunluq qəsdən real kartla eyni seçilib ki, bölmənin ritmi 4 kartda necə görünür — ölçülə bilsin."
+    },
+    "vabiss": {
+      "title": "TBD — VABISS",
+      "desc": "TBD — placeholder: bir-iki cümlə (nə qurdun, nə dəyişdi). Uzunluq qəsdən real kartla eyni seçilib ki, bölmənin ritmi 4 kartda necə görünür — ölçülə bilsin."
     }
   },
   "approach": {
@@ -25,7 +33,7 @@
     "items": {
       "boundary": {
         "lead": "I decide where the work belongs before writing it.",
-        "body": "Before building a feature I ask whether the server should own it. Data that arrives ready needs no conversion or recalculation in the browser."
+        "body": "Before building a feature I ask whether the server should own it. Data that arrives ready needs no conversion or recalculation in the browser. The price is that the change moves onto another team's calendar, so I only push work across that line when the browser would otherwise redo it on every render."
       },
       "core": {
         "lead": "The core path ships first, and stays simple.",

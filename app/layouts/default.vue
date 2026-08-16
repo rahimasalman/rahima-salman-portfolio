@@ -5,7 +5,10 @@
       <div class="nav__right">
         <div class="nav__links">
           <NuxtLink :to="localePath('/')">{{ $t('nav.home') }}</NuxtLink>
-          <NuxtLink :to="localePath('/projects')">{{ $t('nav.projects') }}</NuxtLink>
+          <!-- Ayrıca siyahı səhifəsi ƏVƏZİNƏ ana səhifədəki bölməyə enir: 4 layihə üçün
+               ayrı səhifə ziyarətçini boş yerə bir klik uzaqlaşdırırdı. `/projects` özü qalır
+               (prerender + SEO), sadəcə məcburi keçid nöqtəsi deyil. -->
+          <NuxtLink class="nav__anchor" :to="localePath('/') + '#projects'">{{ $t('nav.projects') }}</NuxtLink>
         </div>
 
         <button
@@ -40,8 +43,28 @@
       </div>
     </nav>
     <slot />
+    <!-- Footer HƏR səhifədə görünür → əlaqə ikonlarının yeri buradır.
+         E-poçt mətn kimi yazılmır (ikon), sosial linklər də eyni formadadır —
+         layihə kartları və Contact bölməsi ilə eyni lüğət. -->
     <footer class="footer">
-      <p>© {{ new Date().getFullYear() }} Rahima Salman· <a href="mailto:rahimasalman7@gmail.com">rahimasalman7@gmail.com</a></p>
+      <p>© {{ new Date().getFullYear() }} Rahima Salman</p>
+      <div class="footer__icons">
+        <a
+            class="footer__icon"
+            href="https://github.com/rahimasalman"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+        ><IconGithub/></a>
+        <a
+            class="footer__icon"
+            href="https://www.linkedin.com/in/rahima-salman/"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+        ><IconLinkedin/></a>
+        <a class="footer__icon" href="mailto:hello.rahimasalman@gmail.com" aria-label="Email"><IconMail/></a>
+      </div>
     </footer>
   </div>
 </template>
@@ -64,12 +87,51 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
 </script>
 
 <style scoped>
+/* Footer artıq yalnız müəllif hüququdur → geri çəkilməlidir.
+   Əvvəl ink rəngdə və adi ölçüdə idi, yəni Contact bəyanatı ilə eyni səs tonunda danışırdı. */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* müəllif hüququ solda, ikonlar sağda */
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-block: clamp(2rem, 6vh, 3.5rem);
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.footer p { margin: 0; }
+
+.footer__icons { display: flex; gap: 1.1rem; }
+
+.footer__icon {
+  display: inline-flex;
+  color: var(--muted);
+  transition: color .2s, transform .2s ease;
+}
+
+.footer__icon svg { width: 18px; height: 18px; display: block; }
+
+.footer__icon:hover { color: var(--accent); transform: translateY(-1px); }
+
+/* mətnsiz linkdə klaviatura fokusu GÖRÜNMƏLİDİR */
+.footer__icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  color: var(--accent);
+}
+
 .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-block: 1.25rem; }
 .nav__brand { font-family: var(--font-display), sans-serif; font-size: 1.25rem;  text-decoration: none}
 .nav__right { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .nav__links { display: flex; gap: 1.25rem; font-size: .95rem; }
 .nav__links a { text-decoration: none; transition: color .2s; }
-.nav__links a:hover, .nav__links a.router-link-active { color: var(--accent); }
+/* 🐞 `.nav__anchor` istisnası: "Projects" artıq ayrıca səhifə deyil, ana səhifədəki
+   BÖLMƏYƏ enən lövbərdir (`/#projects`). Vue Router lövbəri yox sayır — onun üçün bu
+   marşrut sadəcə `/`-dır → ana səhifədə HƏM Home, HƏM Projects `router-link-active`
+   alırdı, yəni ikisi də aktiv görünürdü. Aktiv halı yalnız əsl marşrutlara veririk. */
+.nav__links a:hover,
+.nav__links a.router-link-active:not(.nav__anchor) { color: var(--accent); }
 
 .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;

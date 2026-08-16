@@ -5,7 +5,7 @@
     "description": "Desarrolladora frontend con ~5 años construyendo aplicaciones Vue.js y Nuxt, especializada en plataformas publicitarias. Abierta a roles frontend/senior — Bakú y remoto."
   },
   "hero": {
-    "role": "Ingeniera Frontend — JavaScript / Vue.js / TypeScript · ~5 años",
+    "role": "Ingeniera Frontend — JavaScript / Vue.js / React / TypeScript · ~5 años",
     "tagline": "Construyo plataformas publicitarias de principio a fin —desde la arquitectura hasta el lanzamiento— con foco en rendimiento, sistemas reutilizables y UX limpia."
   },
   "experience": {
@@ -18,6 +18,14 @@
     "adviad": {
       "title": "Adviad — Desarrolladora Frontend",
       "desc": "Diseñé y lideré una plataforma publicitaria multicanal desde el concepto hasta producción en una startup que creció hasta $10M ARR — contribuyendo a un aumento de ingresos de ~45% y un 15% más de velocidad de carga."
+    },
+    "artifactlabs": {
+      "title": "TBD — Artifact Labs",
+      "desc": "TBD — placeholder: bir-iki cümlə (nə qurdun, nə dəyişdi). Uzunluq qəsdən real kartla eyni seçilib ki, bölmənin ritmi 4 kartda necə görünür — ölçülə bilsin."
+    },
+    "vabiss": {
+      "title": "TBD — VABISS",
+      "desc": "TBD — placeholder: bir-iki cümlə (nə qurdun, nə dəyişdi). Uzunluq qəsdən real kartla eyni seçilib ki, bölmənin ritmi 4 kartda necə görünür — ölçülə bilsin."
     }
   },
   "approach": {
@@ -25,7 +33,7 @@
     "items": {
       "boundary": {
         "lead": "Decido dónde va el trabajo antes de escribirlo.",
-        "body": "Antes de construir una funcionalidad pregunto si el servidor debería encargarse. Los datos que llegan listos no necesitan conversiones ni recálculos en el navegador."
+        "body": "Antes de construir una funcionalidad pregunto si el servidor debería encargarse. Los datos que llegan listos no necesitan conversiones ni recálculos en el navegador. El precio es que el cambio pasa al calendario de otro equipo, así que solo cruzo esa línea cuando el navegador tendría que rehacer ese cálculo en cada render."
       },
       "core": {
         "lead": "Primero el camino principal — y se mantiene simple.",
