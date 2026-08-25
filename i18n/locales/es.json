@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Inicio", "projects": "Proyectos" },
+  "nav": { "home": "Inicio", "projects": "Proyectos", "activity": "Actividad" },
   "seo": {
     "title": "Rahima Salman — Ingeniera Frontend",
     "description": "Desarrolladora frontend con ~5 años construyendo aplicaciones Vue.js y Nuxt, especializada en plataformas publicitarias. Abierta a roles frontend/senior — Bakú y remoto."

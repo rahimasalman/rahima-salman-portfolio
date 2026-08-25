@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Home", "projects": "Projects" },
+  "nav": { "home": "Home", "projects": "Projects", "activity": "Activity" },
   "seo": {
     "title": "Rahima Salman — Front-end Engineer",
     "description": "Frontend developer with ~5 years building JavaScript & Vue.js applications, specialized in advertising platforms. Open to frontend/senior roles — Baku & remote."

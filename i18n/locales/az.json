@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Ana səhifə", "projects": "Layihələr" },
+  "nav": { "home": "Ana səhifə", "projects": "Layihələr", "activity": "Fəaliyyət" },
   "seo": {
     "title": "Rahima Salman — Front-end Engineer",
     "description": "JavaScript və Vue.js tətbiqləri quran ~5 illik frontend developer, reklam platformalarında ixtisaslaşıb. Frontend/senior vakansiyalara açıq — Bakı və remote."

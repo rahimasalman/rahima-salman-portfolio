@@ -1,5 +1,5 @@
 {
-  "nav": { "home": "Start", "projects": "Projekte" },
+  "nav": { "home": "Start", "projects": "Projekte", "activity": "Aktivität" },
   "seo": {
     "title": "Rahima Salman — Frontend-Engineer",
     "description": "Frontend-Entwicklerin mit ~5 Jahren Erfahrung in JavaScript und Vue.js-Anwendungen, spezialisiert auf Werbeplattformen. Offen für Frontend-/Senior-Positionen — Baku und remote."
