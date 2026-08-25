@@ -8,7 +8,10 @@
       <div class="hero__links">
         <a href="https://github.com/rahimasalman" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/rahima-salman/" target="_blank">LinkedIn</a>
-        <a href="mailto:hello.rahimasalman@gmail.com">Email</a>
+        <a :href="mailHref">Email</a>
+        <!-- CV: fayl `public/cv/`-ə qoyulub `cv.ready = true` olana qədər link RENDER OLUNMUR
+             (olmayan fayla link = canlıda 404). Etiket "CV" tərcümə olunmur — termindir. -->
+        <a v-if="cv.ready" :href="cv.file" target="_blank" rel="noopener">CV</a>
       </div>
     </section>
 
@@ -18,7 +21,9 @@
       <article v-for="job in experience" :key="job.key" class="exp-card">
         <p class="exp-card__period">{{ job.period }}</p>
         <h3>{{ $t('experience.' + job.key + '.title') }}</h3>
-        <p>{{ $t('experience.' + job.key + '.desc') }}</p>
+        <!-- `desc` BOŞ ola bilər (Artifact Labs / VABISS mətni hələ yazılmayıb) → boş <p> render etmə.
+             Əvvəl bura placeholder yazılmışdı və o mətn 5 dilin HAMISINDA azərbaycanca idi. -->
+        <p v-if="$t('experience.' + job.key + '.desc')">{{ $t('experience.' + job.key + '.desc') }}</p>
         <p v-if="job.tech.length" class="exp-card__tech">{{ job.tech.join(' · ') }}</p>
       </article>
     </section>
@@ -49,7 +54,7 @@
     <section id="projects" class="reveal">
       <h2>{{ $t('projects.title') }}</h2>
       <p>{{ $t('projects.subtitle') }}</p>
-      <ProjectCard v-for="project in projects" :key="project.slug" :project="project"/>
+      <ProjectCard v-for="project in featuredProjects" :key="project.slug" :project="project"/>
       <div class="projects__more">
         <NuxtLink :to="localePath('/activity')" class="view-live">
           {{ $t('experience.activityLink') }}
@@ -71,12 +76,16 @@
 </template>
 
 <script setup lang="ts">
-import {projects} from '~/data/projects'
+import {featuredProjects} from '~/data/projects'
+import {cv} from '~/data/cv'
 import {experience} from '~/data/experience'
 
 const {t} = useI18n()
 
 const localePath = useLocalePath()
+
+/* E-poçt href-i client-də qurulur — statik HTML-də `mailto:` qalmasın (bax: composables/useMailto.ts). */
+const { href: mailHref } = useMailto()
 
 /* Layihələr TAM siyahı ilə göstərilir (`slice`/`featured` yoxdur) — cəmi 4 ədəddir,
    "ilk 3 + hamısına bax" nisbəti bu sayda ziyarətçini boş yerə bir klik uzağa göndərirdi. */
@@ -117,7 +126,10 @@ useHead({
       name: 'Rahima Salman',
       url: 'https://rahimasalman.netlify.app',
       jobTitle: 'Front-end Engineer',
-      email: 'mailto:hello.rahimasalman@gmail.com',
+      /* `email` QƏSDƏN yoxdur: JSON-LD skriptini botlar da oxuyur, ona görə ünvanı burada
+         saxlamaq mailto obfuskasiyasını mənasız edərdi (ünvan yenə statik HTML-də olardı).
+         Əlaqə yolu `sameAs` (GitHub/LinkedIn) + səhifədəki Email linki ilə qalır.
+         ⚠️ Güzəşt: recruiter alətləri strukturlaşdırılmış e-poçtu artıq görmür. */
       sameAs: [
         'https://github.com/rahimasalman',
         'https://www.linkedin.com/in/rahima-salman/',

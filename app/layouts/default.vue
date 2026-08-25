@@ -9,6 +9,12 @@
                ayrı səhifə ziyarətçini boş yerə bir klik uzaqlaşdırırdı. `/projects` özü qalır
                (prerender + SEO), sadəcə məcburi keçid nöqtəsi deyil. -->
           <NuxtLink class="nav__anchor" :to="localePath('/') + '#projects'">{{ $t('nav.projects') }}</NuxtLink>
+          <!-- `/activity` ORFAN idi: səhifə canlı ISR nümayişidir, amma ona daxili link YOX idi
+               (prerender-dən də qəsdən kənardadır) → nə ziyarətçi, nə crawler onu tapa bilirdi. -->
+          <NuxtLink :to="localePath('/activity')">{{ $t('nav.activity') }}</NuxtLink>
+          <!-- `/craft` (Qapı 2 — case-study) linki YALNIZ yazı olanda görünür.
+               Şərt `data/craft.ts`-dədir: boş bölməyə aparan nav linki ziyarətçiyə yalançı vəddir. -->
+          <NuxtLink v-if="hasCraft" :to="localePath('/craft')">Craft</NuxtLink>
         </div>
 
         <button
@@ -63,16 +69,24 @@
             rel="noopener"
             aria-label="LinkedIn"
         ><IconLinkedin/></a>
-        <a class="footer__icon" href="mailto:hello.rahimasalman@gmail.com" aria-label="Email"><IconMail/></a>
+        <a class="footer__icon" :href="mailHref" aria-label="Email"><IconMail/></a>
       </div>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
+import {publishedCraft} from '~/data/craft'
+
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
+
+/* Nav linki yazı sayına bağlıdır — bax: data/craft.ts */
+const hasCraft = publishedCraft.length > 0
+
+/* E-poçt href-i client-də qurulur — statik HTML-də `mailto:` qalmasın (bax: composables/useMailto.ts). */
+const { href: mailHref } = useMailto()
 
 const { theme, toggleTheme } = useTheme()
 
@@ -104,8 +118,15 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
 
 .footer__icons { display: flex; gap: 1.1rem; }
 
+/* ⚠️ Toxunma hədəfi: ikonun ÖZÜ 18px-dir, amma barmaq üçün minimum 24×24 tələb olunur
+   (WCAG 2.2 — Target Size Minimum). Ölçü `padding` ilə yox, `min-width/height` + mərkəzləmə ilə
+   verilir: padding qutunu böyüdüb footer sətrini sürüşdürərdi, min-ölçü isə yalnız klik sahəsini açır. */
 .footer__icon {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
   color: var(--muted);
   transition: color .2s, transform .2s ease;
 }

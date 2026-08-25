@@ -186,6 +186,12 @@ const isInternal = computed(() => !!props.project.caseStudy)
 .project__icon {
   margin-block-start: 0;
   display: inline-flex;
+  /* Toxunma hədəfi 24×24 (WCAG 2.2). `padding` İŞLƏMİR: yuxarı padding ikon sətrini aşağı itələyərdi,
+     `margin-block-start` isə burada 0 qalmalıdır (yuxarıdakı qeyd). → min-ölçü + mərkəzləmə. */
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
   color: var(--muted);
   transition: color .2s, transform .2s ease;
 }

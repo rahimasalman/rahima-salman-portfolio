@@ -1,9 +1,6 @@
-User-Agent: *
-Disallow:
-User-Agent: *
-Disallow:
-
 User-agent: *
 Allow: /
 
-Sitemap: https://rahimasalman.netlify.app/sitemap.xml
+# @nuxtjs/sitemap 5 dil üçün indeks verir; /sitemap.xml yalnız buraya 307 yönləndirir.
+# Yönləndirmə əvəzinə birbaşa indeksi göstəririk — bir addım az, sınma nöqtəsi az.
+Sitemap: https://rahimasalman.netlify.app/sitemap_index.xml
