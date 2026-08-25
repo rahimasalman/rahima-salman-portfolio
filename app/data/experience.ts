@@ -7,9 +7,10 @@
    (Eyni meyar `index.vue`-dakı `stack` massivində də tətbiq olunub: xüsusi ad / texniki
    termin tərcümə olunmur → 5 JSON = eyni məlumatın 5 nüsxəsi olmasın.)
 
-   ⚠️ PLACEHOLDER: `period` dəyərləri və boş `tech` massivləri Rahima tərəfindən doldurulacaq.
-   `tech: []` olan kartda texnologiya sətri ÜMUMİYYƏTLƏ render olunmur (v-if) — yəni boş
-   massiv "boş zolaq" yaratmır, sadəcə element yoxdur. */
+   ⚠️ TARİX FORMATI QƏSDƏN RƏQƏMLİDİR (`MM.YYYY`): bu sahə i18n-də deyil, ona görə içində
+   tərcümə tələb edən söz OLA BİLMƏZ. "present"/"indi" yazsaydıq, o söz 5 dilin hamısında
+   ingiliscə görünərdi. Davam edən iş üçün açıq tire (`12.2024 —`) hər dildə eyni oxunur.
+   Mənbə: personal/raw/…_CV.pdf (uydurulmayıb, CV-dəki aralıqların eynisidir). */
 export type Job = {
     key: string          // i18n açarı: experience.<key>.title / .desc
     period: string
@@ -17,8 +18,8 @@ export type Job = {
 }
 
 export const experience: Job[] = [
-    {key: 'newmedia', period: 'TBD — present', tech: ['TypeScript', 'Vue.js', 'Nuxt']},
-    {key: 'adviad', period: 'TBD — TBD', tech: []},
-    {key: 'artifactlabs', period: 'TBD — TBD', tech: []},
-    {key: 'vabiss', period: 'TBD — TBD', tech: []},
+    {key: 'newmedia',     period: '12.2024 —',            tech: ['TypeScript', 'Vue.js', 'Nuxt', 'REST']},
+    {key: 'adviad',       period: '08.2022 — 12.2024',    tech: ['Vue.js', 'Vuex', 'SCSS', 'Docker']},
+    {key: 'artifactlabs', period: '03.2022 — 07.2022',    tech: ['Vue.js', 'GitLab']},
+    {key: 'vabiss',       period: '03.2021 — 03.2022',    tech: ['JavaScript', 'Vue.js', 'Vuex', 'SCSS']},
 ]

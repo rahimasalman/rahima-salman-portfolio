@@ -15,17 +15,24 @@ export type Project = {
        çünki üç sətirlik detal səhifəsi ziyarətçidən klik alıb əvəzində heç nə vermir
        (həm də Google üçün "thin content"-dir). */
     caseStudy?: boolean
+    /* ANA SƏHİFƏDƏ görünürmü? `/projects` (arxiv) HƏMİŞƏ hamısını göstərir.
+       ⚠️ Bu bayraq 08-16-da silinmişdi, 08-25-də QƏSDƏN geri qaytarıldı — səbəb dəyişdi:
+       əvvəl "ilk 3-ü göstər" mənasında `slice(0,3)` idi və NİYYƏTİ GİZLƏDİRDİ
+       (massivin sırası React→React→Node→Vue idi, yəni hero "Vue/Nuxt" deyir, aşağıda Vue yox idi).
+       İndi seçim məlumatın ÖZÜNDƏDİR: hansı kartın seçilmiş olduğunu data faylına baxan görür.
+       Hazırda dördü də `true` → ana səhifə ilə arxiv eyni görünür. Fərq layihə sayı artanda
+       (və ya bir layihə köhnəldikdə) yaranır: kod DEYİL, yalnız bu sətir dəyişir. */
+    featured?: boolean
 }
 
-/* ⚠️ Sıra = göstərilmə sırası (ana səhifədə də, /projects-də də).
-   `featured` bayrağı SİLİNDİ: cəmi 4 layihə var və hamısı ana səhifədə göstərilir —
-   "ilk 3 + hamısına bax" nisbəti bu sayda gülməli idi. Siyahı 8-10-a çatanda geri qayıdır. */
+/* ⚠️ Sıra = göstərilmə sırası (ana səhifədə də, /projects-də də). */
 export const projects: Project[] = [
     {
         slug: 'vue-countdown-timer',
         title: 'Vue Countdown Timer',
         tech: ['JavaScript', 'Vue'],
         caseStudy: true,
+        featured: true,
         repo: 'https://github.com/rahimasalman/vue-countdown-timer',
     },
     {
@@ -33,6 +40,7 @@ export const projects: Project[] = [
         title: 'Demo Issue Tracker',
         tech: ['TypeScript', 'React'],
         caseStudy: true,
+        featured: true,
         repo: 'https://github.com/rahimasalman/demo-issue-tracker',
     },
     {
@@ -40,6 +48,7 @@ export const projects: Project[] = [
         title: 'React Tetris Game',
         tech: ['TypeScript', 'React'],
         caseStudy: true,
+        featured: true,
         repo: 'https://github.com/rahimasalman/react-tetris-game',
     },
     {
@@ -47,6 +56,11 @@ export const projects: Project[] = [
         title: 'Rahima YelpCamp',
         tech: ['JavaScript', 'Node.js'],
         caseStudy: true,
+        featured: true,
         repo: 'https://github.com/rahimasalman/rahima-yelpcamp',
     },
 ]
+
+/* Ana səhifə BUNU işlədir, `projects`-i yox — filtr komponentdə deyil, data qatındadır ki,
+   "ana səhifədə nə görünür?" sualının cavabı bir yerdə olsun. */
+export const featuredProjects = projects.filter(p => p.featured)

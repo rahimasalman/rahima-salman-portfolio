@@ -1,3 +1,5 @@
+import {publishedCraft} from './app/data/craft'
+
 export default defineNuxtConfig({
     $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
     compatibilityDate: '2025-07-15',
@@ -44,6 +46,14 @@ export default defineNuxtConfig({
         ],
     },
     css: ['~/assets/css/main.css'],
+    /* 🔴 `@nuxtjs/sitemap` URL-ləri `pages/` qovluğundan ÖZÜ toplayır — nav-da link olub-olmaması onu maraqlandırmır.
+       Nəticə: yazı yoxdurkən `/craft` sitemap-a düşürdü, halbuki səhifə 404 verir →
+       Google-a "bu ünvanı indeksləyin" deyib 404 göstərmək = GSC-də "Submitted URL not found" xətası.
+       (Eyni kök səbəb build-i də sındırmışdı: səhifə faylının MÖVCUDLUĞU marşrutu doğurur.)
+       Şərt burada da özü-özünü ləğv edir: ilk yazı `published` olan kimi istisna yox olur. */
+    sitemap: {
+        exclude: publishedCraft.length ? [] : ['/craft', '/*/craft'],
+    },
     site: {
         url: 'https://rahimasalman.netlify.app',
         name: 'Rahima Salman — Portfolio',
@@ -64,6 +74,14 @@ export default defineNuxtConfig({
                 // meta-refresh HTML-i alardı (sitemap üçün meta-refresh izlənmir) = sitemap sınardı.
                 // Sitemap @nuxtjs/sitemap tərəfindən dinamik verilir, prerender olunmamalıdır.
                 /\.xml$/,
+                /* `/craft` HƏLƏ YAZI YOXDURKƏN prerender növbəsindən çıxarılır.
+                   🔑 Tapıntı (08-25): səhifə faylı `pages/`-də mövcud olan kimi Nitro onu
+                   prerender növbəsinə SALIR — nav linki gizli olsa da. Səhifə boş siyahıda
+                   qəsdən 404 verdiyi üçün build 5 dildə `[404] Server Error` ilə sınırdı.
+                   ⚠️ Bu ignore ÖZÜ-ÖZÜNÜ ləğv edir: ilk case-study `published: true` olan kimi
+                   şərt `false` olur, ignore yox olur və crawler səhifəni normal tapır.
+                   (Ona görə əl ilə silinməli "gizli açar" qalmır.) */
+                ...(publishedCraft.length ? [] : [/\/craft$/]),
             ],
         },
     },
@@ -75,5 +93,12 @@ export default defineNuxtConfig({
         // '/activity': {isr: true},       // növbəti deploy-a qədər keş (tam statik kimi)
         '/projects': { prerender: true },
         '/projects/**': { prerender: true },
+        /* `/craft` üçün QƏSDƏN routeRules YOXDUR — və bu, 08-05 qaydasının incə düzəlişidir:
+           🔑 `prerender: true` **konkret yol** üçün marşrutu NÖVBƏYƏ SALIR (yaradır),
+              **glob** (`/projects/**`) üçün isə yalnız icazədir, kəşf etmir.
+           Yəni `'/craft': { prerender: true }` yazan kimi Nitro boş (404 verən) səhifəni
+           prerender etməyə çalışdı və **build sındı** (5 dil × [404] Server Error).
+           Düzgün yol: yazı `published` olan kimi nav linki görünür və `crawlLinks: true`
+           həm `/craft`-i, həm slug səhifələrini özü tapır — əlavə qayda lazım deyil. */
     }
 })
