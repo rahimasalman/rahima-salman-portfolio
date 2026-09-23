@@ -13,19 +13,19 @@
     "activityLink": "Canlı GitHub layihələrim →",
     "newmedia": {
       "title": "New Media Azerbaijan — Frontend Developer",
-      "desc": "TypeScript əsaslı Vue/Nuxt reklam platforması — Google Ads, Meta, TikTok, YouTube, DV360, Telegram və Twitter inteqrasiyası ilə. File-upload, ətraflı hesabat və ödəniş modullarını apardım; ortaq design system və performans büdcələri. Buraxılışdan sonra ilk rübdə ~30% gəlir artımı."
+      "desc": "Vue, Nuxt və TypeScript ilə qurulan reklam platforması — Google, Meta, TikTok, YouTube və digər kanallarda kampaniyaları bir yerdən idarə etməyə imkan verir. Ən çətin hissələr — fayl yükləmə, hesabatlar və ödənişlər — mənim üzərimdə idi, komandanın üzərində qurduğu ortaq design system də. Code review işin böyük hissəsidir: indiyə qədər 300+ pull request. Buraxılışdan sonrakı ilk rübdə gəlir təxminən 30% artdı."
     },
     "adviad": {
       "title": "Adviad — Frontend Developer",
-      "desc": "Cross-channel reklam platformasını sıfırdan prod-a apardım — $10M ARR-a çatan startapda ~45% gəlir artımı və 15% daha sürətli yüklənmə."
+      "desc": "adviad.com-un front-end-i — ilk commit-dən prod-a qədər. Kiçik bir startap idi, orada işlədiyim müddətdə $10M ARR-a çatdı. Platforma gəlirin təxminən 45% artmasına kömək etdi, səhifələr isə yol boyu 15% sürətləndi."
     },
     "artifactlabs": {
       "title": "Artifact Labs — Frontend Developer",
-      "desc": ""
+      "desc": "London komandası ilə remote iş — hər yerdə təkrar istifadə oluna bilən Vue komponentləri üzərində. Bu kitabxana tez bəhrəsini verdi: üç NFT və rəqəmsal sənət məhsulu (GemBox, Materia, Aura.art) üçün landing səhifələri cəmi üç həftəyə canlıya çıxdı."
     },
     "vabiss": {
       "title": "VABISS — Junior Frontend Developer",
-      "desc": ""
+      "desc": "İlk front-end işim. Figma dizaynları yaşıl Lighthouse göstəriciləri ilə Vue səhifələrinə çevrildi, bu işdən kiçik bir komponent kitabxanası yarandı. Üç ay sonra vəzifəm artırıldı."
     }
   },
   "approach": {

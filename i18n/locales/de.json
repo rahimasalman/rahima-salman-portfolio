@@ -13,19 +13,19 @@
     "activityLink": "Meine aktuellen GitHub-Projekte →",
     "newmedia": {
       "title": "New Media Azerbaijan — Frontend-Entwicklerin",
-      "desc": "Entwicklung einer TypeScript-basierten Vue/Nuxt-Werbeplattform mit Integration von Google Ads, Meta, TikTok, YouTube, DV360, Telegram und Twitter. Verantwortlich für Datei-Upload-, Reporting- und Zahlungsmodule; Einführung eines gemeinsamen Design-Systems und Performance-Budgets. ~30% Umsatzsteigerung im ersten Quartal nach Release."
+      "desc": "Eine Werbeplattform mit Vue, Nuxt und TypeScript, über die Kampagnen auf Google, Meta, TikTok, YouTube und weiteren Kanälen an einem Ort laufen. Die kniffligen Teile — Datei-Uploads, Reporting und Zahlungen — lagen bei mir, ebenso das gemeinsame Design System, auf dem das ganze Team aufbaut. Code Reviews gehören fest dazu: bisher über 300 Pull Requests. Im ersten Quartal nach dem Launch stieg der Umsatz um rund 30 %."
     },
     "adviad": {
       "title": "Adviad — Frontend-Entwicklerin",
-      "desc": "Konzeption und Leitung einer kanalübergreifenden Werbeplattform vom Konzept bis zur Produktion in einem Startup, das auf 10 Mio. USD ARR wuchs — Beitrag zu ~45% Umsatzsteigerung und 15% schnelleren Ladezeiten."
+      "desc": "Das Frontend von adviad.com, vom ersten Commit bis in die Produktion. Ein kleines Startup, das in meiner Zeit dort auf 10 Mio. $ ARR wuchs. Die Plattform trug zu rund 45 % mehr Umsatz bei, und die Seiten wurden nebenbei 15 % schneller."
     },
     "artifactlabs": {
       "title": "Artifact Labs — Frontend Developer",
-      "desc": ""
+      "desc": "Remote-Arbeit mit einem Team in London, mit Fokus auf Vue-Komponenten, die sich überall wiederverwenden ließen. Die Bibliothek zahlte sich schnell aus: Landingpages für drei NFT- und Digital-Art-Produkte (GemBox, Materia, Aura.art) gingen in nur drei Wochen live."
     },
     "vabiss": {
       "title": "VABISS — Junior Frontend Developer",
-      "desc": ""
+      "desc": "Mein erster Frontend-Job. Aus Figma-Designs wurden Vue-Seiten mit grünen Lighthouse-Werten, und daraus entstand eine kleine Komponentenbibliothek. Nach drei Monaten wurde ich befördert."
     }
   },
   "approach": {

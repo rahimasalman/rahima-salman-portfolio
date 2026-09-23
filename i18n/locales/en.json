@@ -13,19 +13,19 @@
     "activityLink": "My live GitHub projects →",
     "newmedia": {
       "title": "New Media Azerbaijan — Frontend Developer",
-      "desc": "Building a TypeScript-driven Vue/Nuxt advertising platform integrated with Google Ads, Meta, TikTok, YouTube, DV360, Telegram and Twitter. Led file-upload, advanced reporting and payment modules; drove a shared design system and performance budgets. ~30% revenue uplift in the first quarter post-release."
+      "desc": "An advertising platform in Vue, Nuxt and TypeScript that lets people run campaigns on Google, Meta, TikTok, YouTube and a few more channels from one place. The tricky parts — file uploads, reporting and payments — were mine, along with the shared design system the rest of the team builds on. Code review is a big part of the job too: 300+ pull requests so far. In the first quarter after launch, revenue went up about 30%."
     },
     "adviad": {
       "title": "Adviad — Frontend Developer",
-      "desc": "Architected and led a cross-channel advertising platform from concept to production at a startup that grew to $10M ARR — contributing to a ~45% revenue increase and 15% faster load times."
+      "desc": "The front end of adviad.com, from the first commit to production. It was a small startup that grew to $10M ARR during my time there. The platform helped push revenue up around 45%, and pages got 15% faster along the way."
     },
     "artifactlabs": {
       "title": "Artifact Labs — Frontend Developer",
-      "desc": ""
+      "desc": "Remote work with a team in London, focused on Vue components we could reuse everywhere. That library paid off quickly: landing pages for three NFT and digital-art products (GemBox, Materia, Aura.art) went live in just three weeks."
     },
     "vabiss": {
       "title": "VABISS — Junior Frontend Developer",
-      "desc": ""
+      "desc": "My first front-end job. Figma designs became Vue pages with green Lighthouse scores, and a small component library grew out of that work. Three months in, I was promoted."
     }
   },
   "approach": {

@@ -13,19 +13,19 @@
     "activityLink": "Mis proyectos en GitHub en vivo →",
     "newmedia": {
       "title": "New Media Azerbaijan — Desarrolladora Frontend",
-      "desc": "Desarrollo de una plataforma publicitaria Vue/Nuxt basada en TypeScript, integrada con Google Ads, Meta, TikTok, YouTube, DV360, Telegram y Twitter. Lideré los módulos de subida de archivos, reportes avanzados y pagos; impulsé un sistema de diseño compartido y presupuestos de rendimiento. ~30% de aumento en ingresos en el primer trimestre tras el lanzamiento."
+      "desc": "Una plataforma de publicidad con Vue, Nuxt y TypeScript que permite gestionar campañas en Google, Meta, TikTok, YouTube y otros canales desde un solo lugar. Las partes complicadas — subida de archivos, informes y pagos — eran mías, junto con el design system compartido sobre el que construye todo el equipo. Revisar código es una parte importante del trabajo: más de 300 pull requests hasta ahora. En el primer trimestre tras el lanzamiento, los ingresos subieron alrededor de un 30 %."
     },
     "adviad": {
       "title": "Adviad — Desarrolladora Frontend",
-      "desc": "Diseñé y lideré una plataforma publicitaria multicanal desde el concepto hasta producción en una startup que creció hasta $10M ARR — contribuyendo a un aumento de ingresos de ~45% y un 15% más de velocidad de carga."
+      "desc": "El front-end de adviad.com, desde el primer commit hasta producción. Era una startup pequeña que llegó a 10 M$ de ARR durante mi etapa allí. La plataforma ayudó a subir los ingresos en torno a un 45 %, y por el camino las páginas se volvieron un 15 % más rápidas."
     },
     "artifactlabs": {
       "title": "Artifact Labs — Frontend Developer",
-      "desc": ""
+      "desc": "Trabajo remoto con un equipo en Londres, centrado en componentes de Vue reutilizables en todas partes. Esa librería dio frutos enseguida: las landing pages de tres productos de NFT y arte digital (GemBox, Materia, Aura.art) salieron en solo tres semanas."
     },
     "vabiss": {
       "title": "VABISS — Junior Frontend Developer",
-      "desc": ""
+      "desc": "Mi primer trabajo de front-end. Los diseños de Figma se convirtieron en páginas de Vue con puntuaciones verdes en Lighthouse, y de ese trabajo nació una pequeña librería de componentes. A los tres meses me ascendieron."
     }
   },
   "approach": {
