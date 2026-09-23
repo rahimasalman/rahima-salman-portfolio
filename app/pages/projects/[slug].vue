@@ -88,14 +88,17 @@ useSeoMeta({
   letter-spacing: -.025em;
 }
 
-/* təsvir = bəyanat forması: display şrift, dar sütun (contact__line ilə eyni məntiq) */
+/* təsvir = bəyanat forması: display şrift.
+   ⚠️ `34ch` idi — təsvirlər qısa ikən (bir-iki söz) işləyirdi; bir cümləlik təsvir isə sütunun
+   üçdə birində 3 sətrə bölünüb sağda boş sahə qoyurdu. `60ch` ≈ oxunaqlı sətir həddi:
+   cümlə eni istifadə edir, amma geniş ekranda da göz sətrin sonundan başına rahat qayıdır. */
 .page-head__lead {
   margin: 1rem 0 0;
   font-family: var(--font-display), serif;
   font-size: clamp(1.15rem, 1.05rem + .5vw, 1.5rem);
   line-height: 1.35;
   letter-spacing: -.015em;
-  max-width: 34ch;
+  max-width: 60ch;
   text-wrap: balance;
 }
 

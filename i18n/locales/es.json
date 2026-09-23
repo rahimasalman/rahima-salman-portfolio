@@ -31,8 +31,6 @@
   "approach": {
     "title": "Cómo trabajo",
     "items": {
-      "daily-notes": { "description": "Aplicación full-stack de notas hecha con Nuxt 3 — autenticación, base de datos con Prisma, estado con Pinia." },
-      "repeto": { "description": "Tarjetas de repetición espaciada para preparar entrevistas de front-end — las que fallas vuelven primero." },
       "boundary": {
         "lead": "Decido dónde va el trabajo antes de escribirlo.",
         "body": "Antes de construir una funcionalidad pregunto si el servidor debería encargarse. Los datos que llegan listos no necesitan conversiones ni recálculos en el navegador. El precio es que el cambio pasa al calendario de otro equipo, así que solo cruzo esa línea cuando el navegador tendría que rehacer ese cálculo en cada render."
@@ -80,6 +78,8 @@
     "technologies": "Tecnologías",
     "viewProject": "Ver proyecto →",
     "items": {
+      "daily-notes": { "description": "Aplicación full-stack de notas hecha con Nuxt 3 — autenticación, base de datos con Prisma, estado con Pinia." },
+      "repeto": { "description": "Tarjetas de repetición espaciada para preparar entrevistas de front-end — las que fallas vuelven primero." },
       "react-tetris-game": { "description": "Un clásico juego de Tetris hecho con React." },
       "rahima-yelpcamp": { "description": "Una aplicación tipo Yelp para campamentos." },
       "vue-countdown-timer": { "description": "Un temporizador de cuenta regresiva hecho con Vue." }

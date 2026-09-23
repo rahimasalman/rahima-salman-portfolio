@@ -31,8 +31,6 @@
   "approach": {
     "title": "Wie ich arbeite",
     "items": {
-      "daily-notes": { "description": "Full-Stack-Notiz-App mit Nuxt 3 — Authentifizierung, Prisma-Datenbank, Pinia-State." },
-      "repeto": { "description": "Karteikarten mit verteilter Wiederholung zur Vorbereitung auf Front-End-Interviews — falsch beantwortete Karten kommen zuerst zurück." },
       "boundary": {
         "lead": "Ich entscheide vor dem Schreiben, wohin die Arbeit gehört.",
         "body": "Bevor ich ein Feature baue, frage ich, ob der Server es übernehmen sollte. Daten, die fertig ankommen, brauchen im Browser keine Konvertierung und keine Neuberechnung. Der Preis: die Änderung wandert in den Kalender eines anderen Teams — deshalb schiebe ich Arbeit nur dann über diese Grenze, wenn der Browser sie sonst bei jedem Render neu machen müsste."
@@ -80,6 +78,8 @@
     "technologies": "Technologien",
     "viewProject": "Projekt ansehen →",
     "items": {
+      "daily-notes": { "description": "Full-Stack-Notiz-App mit Nuxt 3 — Authentifizierung, Prisma-Datenbank, Pinia-State." },
+      "repeto": { "description": "Karteikarten mit verteilter Wiederholung zur Vorbereitung auf Front-End-Interviews — falsch beantwortete Karten kommen zuerst zurück." },
       "react-tetris-game": { "description": "Ein klassisches Tetris-Spiel mit React." },
       "rahima-yelpcamp": { "description": "Eine Yelp-ähnliche App für Campingplätze." },
       "vue-countdown-timer": { "description": "Ein einfacher Countdown-Timer mit Vue." }

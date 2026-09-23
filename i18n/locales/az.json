@@ -31,8 +31,6 @@
   "approach": {
     "title": "Necə işləyirəm",
     "items": {
-      "daily-notes": { "description": "Nuxt 3 ilə qurulmuş full-stack qeyd tətbiqi — autentifikasiya, Prisma verilənlər bazası, Pinia state." },
-      "repeto": { "description": "Front-end müsahibələrinə hazırlıq üçün aralıqlı təkrar (spaced repetition) kartları — səhv cavablandırdığın kartlar birinci qayıdır." },
       "boundary": {
         "lead": "İşin yerini kod yazmamışdan əvvəl seçirəm.",
         "body": "Yeni feature qurmazdan əvvəl soruşuram: bunu backend daha sürətli edə bilərmi? Hazır gələn data brauzerdə çevrilməyə və yenidən hesablanmağa ehtiyac qoymur. Bunun qiyməti var: dəyişiklik başqa komandanın təqviminə düşür — ona görə bu xətti yalnız brauzerin həmin hesabı hər render-də təkrarlayacağı halda keçirəm."
@@ -80,6 +78,8 @@
     "technologies": "Texnologiyalar",
     "viewProject": "Layihəyə bax →",
     "items": {
+      "daily-notes": { "description": "Nuxt 3 ilə qurulmuş full-stack qeyd tətbiqi — autentifikasiya, Prisma verilənlər bazası, Pinia state." },
+      "repeto": { "description": "Front-end müsahibələrinə hazırlıq üçün aralıqlı təkrar (spaced repetition) kartları — səhv cavablandırdığın kartlar birinci qayıdır." },
       "react-tetris-game": { "description": "React ilə qurulmuş klassik Tetris oyunu." },
       "rahima-yelpcamp": { "description": "Kamp yerləri üçün Yelp bənzəri tətbiq." },
       "vue-countdown-timer": { "description": "Vue ilə qurulmuş sadə geri sayğac." }

@@ -142,10 +142,23 @@ onUnmounted(() => document.removeEventListener('click', onClickOutside))
   color: var(--accent);
 }
 
-.nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-block: 1.25rem; }
-.nav__brand { font-family: var(--font-display), sans-serif; font-size: 1.25rem;  text-decoration: none}
-.nav__right { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
-.nav__links { display: flex; gap: 1.25rem; font-size: .95rem; }
+/* 🐞 Mobil bug: `.nav__right` sığmayanda SONUNCU uşağı (dil düyməsi) aşağı sətrə atırdı — sola.
+   Menyu isə düyməyə `right: 0` ilə bağlıdır, yəni SOLA açılır → ekrandan kənara çıxırdı.
+   Həll sətri qırmağın SIRASINI dəyişməkdir, menyunu yox:
+   mobil = [brand ··· ☀ AZ] / [linklər], desktop = [brand ··· linklər ☀ AZ].
+   `display: contents` → `.nav__right` qutusu yox olur, uşaqları birbaşa `.nav`-ın flex elementlərinə
+   çevrilir; beləcə linklərə `order` verib ayrıca sətrə salmaq olur (HTML/DOM sırası dəyişmir). */
+.nav { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1rem; padding-block: 1.25rem; }
+.nav__brand { font-family: var(--font-display), sans-serif; font-size: 1.25rem;  text-decoration: none; margin-inline-end: auto; }
+.nav__right { display: contents; }
+.nav__links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .95rem; order: 3; flex-basis: 100%; }
+
+@media (min-width: 768px) {
+  .nav { column-gap: 1.25rem; }
+  /* boş yeri artıq brand-dan sonra yox, linklərdən ƏVVƏL yığırıq → hamısı sağa */
+  .nav__brand { margin-inline-end: 0; }
+  .nav__links { order: 0; flex-basis: auto; margin-inline-start: auto; }
+}
 .nav__links a { text-decoration: none; transition: color .2s; }
 /* 🐞 `.nav__anchor` istisnası: "Projects" artıq ayrıca səhifə deyil, ana səhifədəki
    BÖLMƏYƏ enən lövbərdir (`/#projects`). Vue Router lövbəri yox sayır — onun üçün bu
