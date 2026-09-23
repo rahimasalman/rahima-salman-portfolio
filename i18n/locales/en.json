@@ -31,6 +31,8 @@
   "approach": {
     "title": "How I work",
     "items": {
+      "daily-notes": { "description": "Full-stack note-taking app built with Nuxt 3 — authentication, Prisma database, Pinia state." },
+      "repeto": { "description": "Spaced-repetition flashcards for front-end interview prep — the cards you miss come back first." },
       "boundary": {
         "lead": "I decide where the work belongs before writing it.",
         "body": "Before building a feature I ask whether the server should own it. Data that arrives ready needs no conversion or recalculation in the browser. The price is that the change moves onto another team's calendar, so I only push work across that line when the browser would otherwise redo it on every render."
@@ -78,7 +80,6 @@
     "technologies": "Technologies",
     "viewProject": "View project →",
     "items": {
-      "demo-issue-tracker": { "description": "A simple issue tracking application." },
       "react-tetris-game": { "description": "A classic Tetris game built with React." },
       "rahima-yelpcamp": { "description": "A Yelp-like application for campgrounds." },
       "vue-countdown-timer": { "description": "A simple countdown timer built with Vue." }

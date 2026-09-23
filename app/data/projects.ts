@@ -28,28 +28,40 @@ export type Project = {
 /* ⚠️ Sıra = göstərilmə sırası (ana səhifədə də, /projects-də də). */
 export const projects: Project[] = [
     {
+        slug: 'daily-notes',
+        title: 'Daily Notes',
+        tech: ['TypeScript', 'Nuxt'],
+        caseStudy: true,
+        featured: true,
+        repo: 'https://github.com/rahimasalman/daily-notes-app',
+        live: 'https://rdailynotes.netlify.app',
+    },
+    {
+        slug: 'repeto',
+        title: 'Repeto',
+        tech: ['TypeScript', 'React'],
+        caseStudy: true,
+        featured: true,
+        repo: 'https://github.com/rahimasalman/Repeto',
+        live: 'https://repetoflashcards.netlify.app/',
+    },
+    {
         slug: 'vue-countdown-timer',
         title: 'Vue Countdown Timer',
         tech: ['JavaScript', 'Vue'],
         caseStudy: true,
         featured: true,
         repo: 'https://github.com/rahimasalman/vue-countdown-timer',
-    },
-    {
-        slug: 'demo-issue-tracker',
-        title: 'Demo Issue Tracker',
-        tech: ['TypeScript', 'React'],
-        caseStudy: true,
-        featured: true,
-        repo: 'https://github.com/rahimasalman/demo-issue-tracker',
+        live: 'https://vue-countdown-timer.netlify.app/',
     },
     {
         slug: 'react-tetris-game',
         title: 'React Tetris Game',
-        tech: ['TypeScript', 'React'],
+        tech: ['JavaScript', 'React'],
         caseStudy: true,
         featured: true,
         repo: 'https://github.com/rahimasalman/react-tetris-game',
+        live: 'https://rahimasalman-react-tetris-game.netlify.app/',
     },
     {
         slug: 'rahima-yelpcamp',
@@ -58,6 +70,7 @@ export const projects: Project[] = [
         caseStudy: true,
         featured: true,
         repo: 'https://github.com/rahimasalman/rahima-yelpcamp',
+        live: 'https://rahima-yelpcamp.netlify.app/',
     },
 ]
 

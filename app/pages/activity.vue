@@ -13,9 +13,20 @@ useSeoMeta({
   ogType: 'website',
 })
 
+/* Seçim KODDA deyil, GitHub-dadır: yalnız `portfolio` topic-i olan repolar göstərilir.
+   Əvvəl "son 6 dəyişən repo" idi → fork-lar və öyrənmə repoları da saytda görünürdü.
+   Yeni repo göstərmək = GitHub-da topic əlavə etmək (deploy lazım deyil, ISR 1 saatda təzələyir).
+   ⚠️ `per_page: 100` — filtr bizim tərəfdədir; 6 çəkib filtrləsək, topic-li köhnə repo siyahıya düşməzdi.
+   `transform` yalnız lazım olan 4 sahəni saxlayır → payload-a 100 tam repo obyekti yox,
+   bir neçə kiçik obyekt serializasiya olunur (hidrasiyada brauzerə gedən də budur). */
 const { data: repos, pending, error } = await useFetch(
     'https://api.github.com/users/rahimasalman/repos',
-    { query: { sort: 'updated', per_page: 6 } }
+    {
+      query: { sort: 'pushed', per_page: 100 },
+      transform: (list: any[]) => list
+          .filter(r => !r.fork && r.topics?.includes('portfolio'))
+          .map(({ id, name, html_url, description }) => ({ id, name, html_url, description })),
+    }
 )
 </script>
 
